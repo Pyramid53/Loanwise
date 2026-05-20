@@ -228,13 +228,62 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
   .tab{padding:14px 16px;font-size:13px;}
   header{padding:0 16px;}
 }
+
+/* MODAL STYLES */
+.modal-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center;
+  z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+}
+.modal-overlay.open {
+  opacity: 1; pointer-events: all;
+  backdrop-filter: blur(4px);
+}
+.modal-content {
+  background: var(--surface); width: 90%; max-width: 650px; max-height: 85vh;
+  border-radius: var(--radius-lg); padding: 36px; box-shadow: var(--shadow);
+  overflow-y: auto; transform: translateY(20px); transition: transform 0.3s;
+  position: relative;
+}
+.modal-overlay.open .modal-content {
+  transform: translateY(0);
+}
+.modal-close {
+  position: absolute; top: 20px; right: 24px; background: none; border: none;
+  font-size: 28px; font-weight: 300; cursor: pointer; color: var(--muted);
+  line-height: 1; transition: color 0.2s;
+}
+.modal-close:hover {
+  color: var(--accent);
+}
+.modal-body h2 {
+  font-family: 'Playfair Display', serif; font-size: 26px; color: var(--accent); margin-bottom: 20px;
+}
+.modal-body h3 {
+  font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 600; color: var(--text); margin: 24px 0 10px;
+}
+.modal-body p {
+  font-size: 15px; color: var(--muted); margin-bottom: 16px; line-height: 1.7;
+}
+.modal-body ul {
+  padding-left: 20px; margin-bottom: 16px;
+}
+.modal-body li {
+  font-size: 15px; color: var(--muted); margin-bottom: 8px; line-height: 1.7;
+}
+.modal-body a {
+  color: var(--accent2); text-decoration: none;
+}
+.modal-body a:hover {
+  text-decoration: underline;
+}
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
 <header>
-  <div class="logo">Loan<span>Wise</span></div>
+  <div class="logo">Load<span>Rate</span></div>
   <div class="header-right">
     <select class="currency-sel" id="globalCurrency" onchange="updateCurrency()">
       <option value="USD">🇺🇸 USD $</option>
@@ -644,12 +693,95 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
 </div>
 
 <footer>
-  <strong>LoanWise</strong> — Free Mortgage & Loan Calculator<br>
+  <strong>Load Rate</strong> — Free Mortgage & Loan Calculator<br>
   <span style="font-size:12px;">Results are estimates for informational purposes only and do not constitute financial advice. Always consult a qualified financial advisor before making borrowing decisions. Interest rates and terms vary by lender and individual circumstances.</span><br>
-  <span style="font-size:12px;margin-top:8px;display:block;"><a href="#">Privacy Policy</a> · <a href="#">Terms of Use</a> · <a href="#">Contact</a></span>
+  <span style="font-size:12px;margin-top:8px;display:block;"><a href="#" onclick="openModal('privacy')">Privacy Policy</a> &middot; <a href="#" onclick="openModal('terms')">Terms of Use</a> &middot; <a href="#" onclick="openModal('contact')">Contact Us</a> &middot; <a href="#" onclick="openModal('about')">About Us</a></span>
 </footer>
 
 <script>
+
+// ── MODAL CONTENT ──
+const legalContent = {
+  privacy: `
+    <h2>Privacy Policy</h2>
+    <p>Last updated: ${new Date().getFullYear()}</p>
+    <p>Welcome to Load Rate. We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice, or our practices with regards to your personal information, please contact us.</p>
+    
+    <h3>1. Information We Collect</h3>
+    <p>We do not collect any personal data when you use our calculators. All calculations are performed entirely in your browser (client-side), and any inputs you provide are not sent to or stored on our servers. We use basic analytics and advertising cookies strictly in accordance with Google AdSense terms.</p>
+    
+    <h3>2. Cookies and Web Beacons</h3>
+    <p>We use cookies to store information about visitors' preferences, to record user-specific information on which pages the site visitor accesses or visits, and to personalize or customize our web page content based upon visitors' browser type or other information that the visitor sends via their browser.</p>
+    <ul>
+      <li><strong>Google AdSense:</strong> Third party vendors, including Google, use cookies to serve ads based on a user's prior visits to your website or other websites.</li>
+      <li>Google's use of advertising cookies enables it and its partners to serve ads to your users based on their visit to your sites and/or other sites on the Internet.</li>
+      <li>Users may opt-out of personalized advertising by visiting Google's <a href="https://myadcenter.google.com/" target="_blank">Ads Settings</a>.</li>
+    </ul>
+
+    <h3>3. External Links</h3>
+    <p>Our website may contain links to external sites that are not operated by us. If you click on a third party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy and terms of every site you visit.</p>
+  `,
+  terms: `
+    <h2>Terms of Use</h2>
+    <p>Last updated: ${new Date().getFullYear()}</p>
+    <p>By accessing and using Load Rate, you accept and agree to be bound by the terms and provision of this agreement. In addition, when using this websites particular services, you shall be subject to any posted guidelines or rules applicable to such services.</p>
+    
+    <h3>1. Use of Calculators</h3>
+    <p>The calculators provided on this website are for illustrative and informational purposes only. The results are estimates and should not be considered financial advice. You should always consult with a qualified financial advisor, bank, or mortgage broker before making any financial decisions.</p>
+
+    <h3>2. Disclaimer of Warranties</h3>
+    <p>The site and its original content, features, and functionality are owned by Load Rate and are protected by international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws. We provide this site on an "as is" and "as available" basis without any warranty or condition, express, implied, or statutory.</p>
+
+    <h3>3. Limitation of Liability</h3>
+    <p>In no event shall Load Rate, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service.</p>
+  `,
+  contact: `
+    <h2>Contact Us</h2>
+    <p>If you have any questions, suggestions, or concerns about Load Rate, we'd love to hear from you.</p>
+    <p>Please note that we do not provide personal financial advice. For specific questions regarding your own financial situation, loan rates, or mortgages, please contact a licensed financial institution or advisor.</p>
+    
+    <h3>Get in Touch</h3>
+    <ul>
+      <li><strong>Email:</strong> support@loadrate-calculator.com</li>
+      <li><strong>Support Hours:</strong> Monday - Friday, 9am - 5pm (EST)</li>
+    </ul>
+    
+    <p>If you're writing regarding an error with one of the calculators, please include the values you entered so we can reproduce and fix the issue.</p>
+  `,
+  about: `
+    <h2>About Us</h2>
+    <p>Welcome to <strong>Load Rate</strong> — your trusted source for free, instant, and accurate financial calculators.</p>
+    
+    <h3>Our Mission</h3>
+    <p>We built Load Rate because we believe everyone should have access to transparent, easy-to-understand financial tools. Whether you're buying your first home, financing a car, or paying off student debt, understanding your financial commitments is the first step toward financial freedom.</p>
+    
+    <h3>Why Choose Us?</h3>
+    <ul>
+      <li><strong>100% Free:</strong> We never charge for access to our calculators.</li>
+      <li><strong>No Signups:</strong> You don't need an account or email to use our tools.</li>
+      <li><strong>Privacy First:</strong> Your calculations happen in your browser. We don't save your loan inputs or personal financial data.</li>
+    </ul>
+    
+    <p>Thank you for using Load Rate. We hope our tools help you make confident financial decisions!</p>
+  `
+};
+
+function openModal(type) {
+  event.preventDefault();
+  const content = legalContent[type];
+  if (content) {
+    document.getElementById('legal-modal-body').innerHTML = content;
+    document.getElementById('legal-modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  }
+}
+
+function closeModal(e) {
+  if (e) e.preventDefault();
+  document.getElementById('legal-modal-overlay').classList.remove('open');
+  document.body.style.overflow = 'auto'; // Restore background scrolling
+}
+
 // ── STATE ──
 let currency = 'USD';
 let donutCharts = {};
@@ -1005,5 +1137,15 @@ try {
   }
 } catch(e) {}
 </script>
+
+<!-- LEGAL MODALS -->
+<div class="modal-overlay" id="legal-modal-overlay" onclick="closeModal(event)">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal(event)">&times;</button>
+    <div class="modal-body" id="legal-modal-body">
+      <!-- Content injected by JS -->
+    </div>
+  </div>
+</div>
 </body>
 </html>
