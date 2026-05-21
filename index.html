@@ -3,14 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Mortgage & Loan Calculator 2026 | Monthly Payment, Amortization Schedule</title>
-<meta name="description" content="Free online mortgage calculator, car loan calculator, personal loan calculator and student loan calculator. Calculate monthly payments, total interest and full amortization schedule instantly.">
-<meta name="keywords" content="mortgage calculator, loan calculator, monthly payment calculator, amortization schedule, car loan calculator, personal loan calculator, student loan calculator">
-<meta property="og:title" content="Free Mortgage & Loan Calculator 2026">
-<meta property="og:description" content="Calculate mortgage payments, car loans, personal loans and student loans instantly. Full amortization schedule included.">
+<title>Load Rate - Free Mortgage & Loan Calculator 2026 | Monthly Payment & Amortization</title>
+<meta name="description" content="Use Load Rate's free online calculator to easily estimate mortgage, car, personal, and student loan monthly payments. See full amortization schedules instantly.">
+<meta name="keywords" content="mortgage calculator, load rate, loan calculator, monthly payment calculator, amortization schedule, car loan calculator, personal loan calculator, student loan calculator, interest rate calculator">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Load Rate">
+<link rel="canonical" href="https://myloanrate.net/">
+
+<!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FinancialProduct","name":"Mortgage & Loan Calculator","description":"Free online calculator for mortgages, car loans, personal loans and student loans","feesAndCommissionsSpecification":"Free to use"}
+<meta property="og:url" content="https://myloanrate.net/">
+<meta property="og:title" content="Load Rate - Free Mortgage & Loan Calculator 2026">
+<meta property="og:description" content="Easily estimate your monthly loan payments and view full amortization schedules for mortgages, car loans, personal loans, and student loans.">
+<meta property="og:image" content="https://myloanrate.net/og-image.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://myloanrate.net/">
+<meta property="twitter:title" content="Load Rate - Free Mortgage & Loan Calculator 2026">
+<meta property="twitter:description" content="Easily estimate your monthly loan payments and view full amortization schedules for mortgages, car loans, personal loans, and student loans.">
+<meta property="twitter:image" content="https://myloanrate.net/og-image.jpg">
+
+<!-- Structured Data -->
+<script type="application/ld+json" id="seo-structured-data">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "Load Rate",
+      "url": "https://myloanrate.net/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://myloanrate.net/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Load Rate Calculator",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Free online calculator for mortgages, car loans, personal loans and student loans with amortization schedules."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is my monthly mortgage payment calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your monthly payment is calculated using the amortization formula: M = P[r(1+r)^n]/[(1+r)^n-1], where P is the loan principal, r is the monthly interest rate (annual rate ÷ 12), and n is the total number of payments. Each payment covers interest first, then the remainder reduces your principal balance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I make extra monthly payments?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Extra payments go directly toward your principal balance, which dramatically reduces the total interest you pay and shortens your loan term."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is an amortization schedule?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An amortization schedule is a complete table showing every payment over the life of your loan. It breaks down each payment into how much goes toward interest vs. principal."
+          }
+        }
+      ]
+    }
+  ]
+}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -304,7 +375,7 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
 
 <!-- HERO -->
 <div class="hero">
-  <h1>The Smartest Free<br><em>Loan Calculator</em></h1>
+  <h1>Free Mortgage &<br><em>Loan Calculator</em></h1>
   <p>Mortgage, car, personal, student loans — calculate monthly payments, total interest and full amortization in seconds.</p>
   <div class="hero-badges">
     <span class="badge">✓ No signup required</span>
@@ -411,14 +482,14 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
 
         <div class="charts-row">
           <div style="position:relative;width:140px;height:140px;">
-            <canvas id="donut-mortgage" role="img" aria-label="Donut chart showing principal vs interest breakdown"></canvas>
+            <canvas id="donut-mortgage" role="img" aria-label="Donut chart showing mortgage principal versus interest breakdown" aria-label="Donut chart showing principal vs interest breakdown"></canvas>
           </div>
           <div class="chart-legend" id="leg-mortgage"></div>
         </div>
 
         <div class="bar-chart-title">Balance Over Time</div>
         <div style="position:relative;width:100%;height:200px;margin-bottom:20px;">
-          <canvas id="bar-mortgage" role="img" aria-label="Bar chart showing remaining balance each year"></canvas>
+          <canvas id="bar-mortgage" role="img" aria-label="Bar chart showing mortgage remaining balance and amortization each year"></canvas>
         </div>
 
         <div class="amort-wrap">
@@ -742,7 +813,7 @@ const legalContent = {
     
     <h3>Get in Touch</h3>
     <ul>
-      <li><strong>Email:</strong> support@loadrate-calculator.com</li>
+      <li><strong>Email:</strong> support@myloanrate.net</li>
       <li><strong>Support Hours:</strong> Monday - Friday, 9am - 5pm (EST)</li>
     </ul>
     
