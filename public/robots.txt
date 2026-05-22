@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://myloanrate.net/sitemap.xml
+Sitemap: https://debtcalc.online/sitemap.xml
