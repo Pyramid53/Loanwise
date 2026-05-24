@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const articlesDir = path.join(__dirname, 'public', 'articles');
+const articlesDir = path.join(__dirname, 'articles');
 if (!fs.existsSync(articlesDir)) {
   fs.mkdirSync(articlesDir, { recursive: true });
 }
