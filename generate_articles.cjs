@@ -190,13 +190,13 @@ const template = (article) => `<!DOCTYPE html>
     <header>
         <div class="logo"><a href="/">Debt<span>Calc</span></a></div>
         <div>
-            <a href="/articles/index.html" class="nav-link">Articles</a>
+            <a href="/articles/all.html" class="nav-link">Articles</a>
             <a href="/" class="nav-link" style="margin-left: 20px;">Calculators</a>
         </div>
     </header>
 
     <div class="article-container">
-        <a href="/articles/index.html" class="back-link">← Back to Articles</a>
+        <a href="/articles/all.html" class="back-link">← Back to Articles</a>
         <h1>${article.title}</h1>
         <div class="content">
             ${article.content}
@@ -258,7 +258,7 @@ const indexTemplate = `<!DOCTYPE html>
     <header>
         <div class="logo"><a href="/">Debt<span>Calc</span></a></div>
         <div>
-            <a href="/articles/index.html" class="nav-link">Articles</a>
+            <a href="/articles/all.html" class="nav-link">Articles</a>
             <a href="/" class="nav-link" style="margin-left: 20px;">Calculators</a>
         </div>
     </header>
@@ -270,6 +270,6 @@ const indexTemplate = `<!DOCTYPE html>
 </body>
 </html>`;
 
-fs.writeFileSync(path.join(articlesDir, 'index.html'), indexTemplate);
+fs.writeFileSync(path.join(articlesDir, 'all.html'), indexTemplate);
 
 console.log('Articles generated successfully.');
