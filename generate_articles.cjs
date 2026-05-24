@@ -65,150 +65,210 @@ const articles = [
       <h2>5. Round Up Your Payments</h2>
       <p>If your car payment is $345, round it up to $400. That extra $55 per month goes straight to the principal, shaving months off your loan.</p>
     `
+  },
+  {
+    slug: 'personal-loans-vs-credit-cards',
+    title: 'Personal Loans vs. Credit Cards: Which is Better?',
+    description: 'A comprehensive comparison of personal loans and credit cards. Learn which financing option makes sense for your unique financial situation.',
+    content: `
+      <h2>Understanding the Basics</h2>
+      <p>When you need to borrow money, two of the most popular options are personal loans and credit cards. Both offer unsecured borrowing, meaning you don't need to put up collateral like a house or a car, but they function in very different ways.</p>
+
+      <h2>How Credit Cards Work</h2>
+      <p>A credit card provides a revolving line of credit. You are given a maximum credit limit, and you can borrow up to that amount repeatedly, as long as you pay at least the minimum amount due each month. Credit cards are ideal for everyday purchases, earning rewards, and covering smaller, short-term expenses. However, they generally come with higher, variable interest rates.</p>
+
+      <h2>How Personal Loans Work</h2>
+      <p>A personal loan is an installment loan. You borrow a fixed amount of money as a lump sum and agree to pay it back over a set term (e.g., 3 to 5 years) with fixed monthly payments. Personal loans typically offer lower, fixed interest rates compared to credit cards, making them better for large, one-time expenses or consolidating high-interest debt.</p>
+
+      <h2>When to Use a Personal Loan</h2>
+      <ul>
+        <li><strong>Debt Consolidation:</strong> Paying off multiple high-interest credit cards with a single lower-interest personal loan.</li>
+        <li><strong>Large Purchases:</strong> Funding a home improvement project or a major unexpected expense where you need a large sum upfront.</li>
+        <li><strong>Predictability:</strong> When you want the stability of a fixed monthly payment and a specific payoff date.</li>
+      </ul>
+
+      <h2>When to Use a Credit Card</h2>
+      <ul>
+        <li><strong>Everyday Spending:</strong> Paying for groceries, gas, and bills while earning cashback or travel rewards (provided you pay the balance in full each month).</li>
+        <li><strong>Small Emergencies:</strong> Covering a $500 car repair that you can pay off over a month or two.</li>
+        <li><strong>0% Intro APR Offers:</strong> Taking advantage of a promotional 0% interest period for financing a purchase over 12-18 months.</li>
+      </ul>
+    `
+  },
+  {
+    slug: 'saving-for-down-payment',
+    title: 'How to Save for a Down Payment on a House',
+    description: 'Learn practical and effective strategies to build your savings and reach your down payment goals faster.',
+    content: `
+      <h2>Assess Your Goal</h2>
+      <p>The first step to saving for a down payment is knowing exactly how much you need. While a 20% down payment is ideal to avoid Private Mortgage Insurance (PMI), many first-time homebuyer programs allow for down payments as low as 3% to 5%. Use our <a href="/">Mortgage Calculator</a> to estimate home prices and down payment amounts to set a realistic goal.</p>
+
+      <h2>Create a Dedicated Savings Account</h2>
+      <p>Keep your down payment funds separate from your everyday checking or general savings accounts. Look for a High-Yield Savings Account (HYSA) to earn more interest on your money while keeping it easily accessible and risk-free.</p>
+
+      <h2>Automate Your Savings</h2>
+      <p>Set up an automatic transfer from your checking account to your dedicated down payment account every time you get paid. Treating this transfer like a fixed monthly bill ensures you consistently make progress without having to think about it.</p>
+
+      <h2>Cut Discretionary Spending</h2>
+      <p>Review your budget to find areas where you can cut back. This might mean dining out less, canceling unused subscriptions, or reducing travel expenses temporarily. Redirect all the money you save directly into your down payment fund.</p>
+
+      <h2>Boost Your Income</h2>
+      <p>Increasing your income can significantly accelerate your savings timeline. Consider picking up a side hustle, negotiating a raise, selling unwanted items, or redirecting bonuses and tax refunds straight into your savings account.</p>
+    `
   }
 ];
 
-const template = (article) => '<!DOCTYPE html>\\n<html lang="en">\\n<head>\\n' +
-    '<meta charset="UTF-8">\\n' +
-    '<meta name="viewport" content="width=device-width, initial-scale=1.0">\\n' +
-    '<title>' + article.title + ' - DebtCalc</title>\\n' +
-    '<meta name="description" content="' + article.description + '">\\n' +
-    '<link rel="icon" href="/favicon.svg" type="image/svg+xml">\\n' +
-    '<link rel="canonical" href="https://debtcalc.online/articles/' + article.slug + '.html">\\n' +
-    '<link rel="preconnect" href="https://fonts.googleapis.com">\\n' +
-    '<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">\\n' +
-    '<style>\\n' +
-    '    :root {\\n' +
-    '        --bg: #f7f6f3;\\n' +
-    '        --surface: #ffffff;\\n' +
-    '        --border: #e2e0d8;\\n' +
-    '        --accent: #1a3a2a;\\n' +
-    '        --text: #2c2b29;\\n' +
-    '        --muted: #6b6a67;\\n' +
-    '    }\\n' +
-    '    body {\\n' +
-    '        background-color: var(--bg);\\n' +
-    '        color: var(--text);\\n' +
-    '        font-family: \\'Outfit\\', sans-serif;\\n' +
-    '        margin: 0;\\n' +
-    '        padding: 0;\\n' +
-    '        line-height: 1.6;\\n' +
-    '    }\\n' +
-    '    header {\\n' +
-    '        background: var(--surface);\\n' +
-    '        padding: 20px;\\n' +
-    '        border-bottom: 1px solid var(--border);\\n' +
-    '        display: flex;\\n' +
-    '        justify-content: space-between;\\n' +
-    '        align-items: center;\\n' +
-    '        max-width: 1000px;\\n' +
-    '        margin: 0 auto;\\n' +
-    '    }\\n' +
-    '    .logo { font-family: \\'Playfair Display\\', serif; font-size: 24px; font-weight: 800; color: var(--accent); }\\n' +
-    '    .logo span { color: #c9a84c; font-style: italic; }\\n' +
-    '    .logo a { text-decoration: none; color: inherit; }\\n' +
-    '    .nav-link { color: var(--accent); text-decoration: none; font-weight: 500; }\\n' +
-    '    .nav-link:hover { text-decoration: underline; }\\n' +
-    '    .article-container {\\n' +
-    '        max-width: 800px;\\n' +
-    '        margin: 40px auto;\\n' +
-    '        background: var(--surface);\\n' +
-    '        padding: 40px;\\n' +
-    '        border-radius: 12px;\\n' +
-    '        box-shadow: 0 4px 12px rgba(0,0,0,0.05);\\n' +
-    '    }\\n' +
-    '    h1 { font-family: \\'Playfair Display\\', serif; color: var(--accent); font-size: 36px; margin-top: 0; line-height: 1.2; }\\n' +
-    '    h2 { font-family: \\'Playfair Display\\', serif; color: var(--accent); font-size: 24px; margin-top: 30px; }\\n' +
-    '    p { font-size: 17px; color: var(--muted); margin-bottom: 20px; }\\n' +
-    '    ul, ol { font-size: 17px; color: var(--muted); margin-bottom: 20px; padding-left: 20px; }\\n' +
-    '    li { margin-bottom: 10px; }\\n' +
-    '    a { color: #2d6a4f; text-decoration: none; font-weight: 500; }\\n' +
-    '    a:hover { text-decoration: underline; }\\n' +
-    '    .back-link {\\n' +
-    '        display: inline-block;\\n' +
-    '        margin-bottom: 20px;\\n' +
-    '        color: var(--muted);\\n' +
-    '        text-decoration: none;\\n' +
-    '        font-size: 15px;\\n' +
-    '    }\\n' +
-    '    .back-link:hover { color: var(--accent); }\\n' +
-    '</style>\\n' +
-    '</head>\\n<body>\\n' +
-    '    <header>\\n' +
-    '        <div class="logo"><a href="/">Debt<span>Calc</span></a></div>\\n' +
-    '        <div>\\n' +
-    '            <a href="/articles/" class="nav-link">Articles</a>\\n' +
-    '            <a href="/" class="nav-link" style="margin-left: 20px;">Calculators</a>\\n' +
-    '        </div>\\n' +
-    '    </header>\\n' +
-    '\\n' +
-    '    <div class="article-container">\\n' +
-    '        <a href="/articles/" class="back-link">← Back to Articles</a>\\n' +
-    '        <h1>' + article.title + '</h1>\\n' +
-    '        <div class="content">\\n' +
-    '            ' + article.content + '\\n' +
-    '        </div>\\n' +
-    '    </div>\\n' +
-    '</body>\\n</html>';
+const template = (article) => `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${article.title} - DebtCalc</title>
+    <meta name="description" content="${article.description}">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="canonical" href="https://debtcalc.online/articles/${article.slug}.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7f6f3;
+            --surface: #ffffff;
+            --border: #e2e0d8;
+            --accent: #1a3a2a;
+            --text: #2c2b29;
+            --muted: #6b6a67;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background: var(--surface);
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: var(--accent); }
+        .logo span { color: #c9a84c; font-style: italic; }
+        .logo a { text-decoration: none; color: inherit; }
+        .nav-link { color: var(--accent); text-decoration: none; font-weight: 500; }
+        .nav-link:hover { text-decoration: underline; }
+        .article-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: var(--surface);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        h1 { font-family: 'Playfair Display', serif; color: var(--accent); font-size: 36px; margin-top: 0; line-height: 1.2; }
+        h2 { font-family: 'Playfair Display', serif; color: var(--accent); font-size: 24px; margin-top: 30px; }
+        p { font-size: 17px; color: var(--muted); margin-bottom: 20px; }
+        ul, ol { font-size: 17px; color: var(--muted); margin-bottom: 20px; padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        a { color: #2d6a4f; text-decoration: none; font-weight: 500; }
+        a:hover { text-decoration: underline; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 15px;
+        }
+        .back-link:hover { color: var(--accent); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="/">Debt<span>Calc</span></a></div>
+        <div>
+            <a href="/articles/index.html" class="nav-link">Articles</a>
+            <a href="/" class="nav-link" style="margin-left: 20px;">Calculators</a>
+        </div>
+    </header>
+
+    <div class="article-container">
+        <a href="/articles/index.html" class="back-link">← Back to Articles</a>
+        <h1>${article.title}</h1>
+        <div class="content">
+            ${article.content}
+        </div>
+    </div>
+</body>
+</html>`;
 
 let indexListHtml = "";
 articles.forEach(article => {
   const file = path.join(articlesDir, article.slug + '.html');
   fs.writeFileSync(file, template(article));
-  indexListHtml += '<div class="article-card" style="margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid var(--border);">\\n' +
-    '<h2 style="margin-top: 0;"><a href="/articles/' + article.slug + '.html">' + article.title + '</a></h2>\\n' +
-    '<p>' + article.description + '</p>\\n' +
-    '<a href="/articles/' + article.slug + '.html" style="font-weight: 600;">Read more →</a>\\n' +
-    '</div>\\n';
+  indexListHtml += `
+    <div class="article-card" style="margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid var(--border);">
+      <h2 style="margin-top: 0;"><a href="/articles/${article.slug}.html">${article.title}</a></h2>
+      <p>${article.description}</p>
+      <a href="/articles/${article.slug}.html" style="font-weight: 600;">Read more →</a>
+    </div>
+  `;
 });
 
-const indexTemplate = '<!DOCTYPE html>\\n<html lang="en">\\n<head>\\n' +
-    '<meta charset="UTF-8">\\n' +
-    '<meta name="viewport" content="width=device-width, initial-scale=1.0">\\n' +
-    '<title>Financial Articles & Guides - DebtCalc</title>\\n' +
-    '<meta name="description" content="Discover expert guides and articles on mortgages, loan amortization, and debt payoff strategies.">\\n' +
-    '<link rel="icon" href="/favicon.svg" type="image/svg+xml">\\n' +
-    '<link rel="canonical" href="https://debtcalc.online/articles/">\\n' +
-    '<link rel="preconnect" href="https://fonts.googleapis.com">\\n' +
-    '<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">\\n' +
-    '<style>\\n' +
-    '    :root {\\n' +
-    '        --bg: #f7f6f3;\\n' +
-    '        --surface: #ffffff;\\n' +
-    '        --border: #e2e0d8;\\n' +
-    '        --accent: #1a3a2a;\\n' +
-    '        --text: #2c2b29;\\n' +
-    '        --muted: #6b6a67;\\n' +
-    '    }\\n' +
-    '    body { background-color: var(--bg); color: var(--text); font-family: \\'Outfit\\', sans-serif; margin: 0; padding: 0; line-height: 1.6; }\\n' +
-    '    header { background: var(--surface); padding: 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; }\\n' +
-    '    .logo { font-family: \\'Playfair Display\\', serif; font-size: 24px; font-weight: 800; color: var(--accent); }\\n' +
-    '    .logo span { color: #c9a84c; font-style: italic; }\\n' +
-    '    .logo a { text-decoration: none; color: inherit; }\\n' +
-    '    .nav-link { color: var(--accent); text-decoration: none; font-weight: 500; }\\n' +
-    '    .nav-link:hover { text-decoration: underline; }\\n' +
-    '    .container { max-width: 800px; margin: 40px auto; background: var(--surface); padding: 40px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }\\n' +
-    '    h1 { font-family: \\'Playfair Display\\', serif; color: var(--accent); font-size: 36px; margin-top: 0; }\\n' +
-    '    h2 a { font-family: \\'Playfair Display\\', serif; color: var(--accent); text-decoration: none; font-size: 24px; }\\n' +
-    '    h2 a:hover { text-decoration: underline; }\\n' +
-    '    p { font-size: 17px; color: var(--muted); }\\n' +
-    '    a { color: #2d6a4f; text-decoration: none; }\\n' +
-    '    a:hover { text-decoration: underline; }\\n' +
-    '</style>\\n' +
-    '</head>\\n<body>\\n' +
-    '    <header>\\n' +
-    '        <div class="logo"><a href="/">Debt<span>Calc</span></a></div>\\n' +
-    '        <div>\\n' +
-    '            <a href="/articles/" class="nav-link">Articles</a>\\n' +
-    '            <a href="/" class="nav-link" style="margin-left: 20px;">Calculators</a>\\n' +
-    '        </div>\\n' +
-    '    </header>\\n' +
-    '    <div class="container">\\n' +
-    '        <h1>Financial Articles & Guides</h1>\\n' +
-    '        <p style="margin-bottom: 40px;">Expert insights to help you make informed financial decisions and manage your debt effectively.</p>\\n' +
-    '        ' + indexListHtml + '\\n' +
-    '    </div>\\n' +
-    '</body>\\n</html>';
+const indexTemplate = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Articles & Guides - DebtCalc</title>
+    <meta name="description" content="Discover expert guides and articles on mortgages, loan amortization, and debt payoff strategies.">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="canonical" href="https://debtcalc.online/articles/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7f6f3;
+            --surface: #ffffff;
+            --border: #e2e0d8;
+            --accent: #1a3a2a;
+            --text: #2c2b29;
+            --muted: #6b6a67;
+        }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; margin: 0; padding: 0; line-height: 1.6; }
+        header { background: var(--surface); padding: 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: var(--accent); }
+        .logo span { color: #c9a84c; font-style: italic; }
+        .logo a { text-decoration: none; color: inherit; }
+        .nav-link { color: var(--accent); text-decoration: none; font-weight: 500; }
+        .nav-link:hover { text-decoration: underline; }
+        .container { max-width: 800px; margin: 40px auto; background: var(--surface); padding: 40px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        h1 { font-family: 'Playfair Display', serif; color: var(--accent); font-size: 36px; margin-top: 0; }
+        h2 a { font-family: 'Playfair Display', serif; color: var(--accent); text-decoration: none; font-size: 24px; }
+        h2 a:hover { text-decoration: underline; }
+        p { font-size: 17px; color: var(--muted); }
+        a { color: #2d6a4f; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="/">Debt<span>Calc</span></a></div>
+        <div>
+            <a href="/articles/index.html" class="nav-link">Articles</a>
+            <a href="/" class="nav-link" style="margin-left: 20px;">Calculators</a>
+        </div>
+    </header>
+    <div class="container">
+        <h1>Financial Articles & Guides</h1>
+        <p style="margin-bottom: 40px;">Expert insights to help you make informed financial decisions and manage your debt effectively.</p>
+        ${indexListHtml}
+    </div>
+</body>
+</html>`;
 
 fs.writeFileSync(path.join(articlesDir, 'index.html'), indexTemplate);
 

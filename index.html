@@ -360,7 +360,7 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
 <header>
   <div class="logo">Debt<span>Calc</span></div>
   <div class="header-right" style="display: flex; align-items: center; gap: 20px;">
-    <a href="/articles/" style="color: var(--accent); text-decoration: none; font-weight: 500; font-size: 14px;">Guides & Articles</a>
+    <a href="/articles/index.html" style="color: var(--accent); text-decoration: none; font-weight: 500; font-size: 14px;">Guides & Articles</a>
     <select class="currency-sel" id="globalCurrency" onchange="updateCurrency()">
       <option value="USD">🇺🇸 USD $</option>
       <option value="GBP">🇬🇧 GBP £</option>
@@ -725,6 +725,32 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
 
 </div><!-- end main grid -->
 </div><!-- end container -->
+
+<!-- LATEST ARTICLES -->
+<div class="faq-section" style="margin-bottom: 40px; background: white; padding: 40px; border-radius: 16px; box-shadow: 0px 4px 20px rgba(0,0,0,0.03);">
+  <h2>Guides &amp; Articles</h2>
+  <p class="sub">Discover expert guides to help you manage your debt and calculate loans.</p>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px;">
+    <a href="/articles/saving-for-down-payment.html" style="text-decoration: none; color: inherit; border: 1px solid var(--border); padding: 20px; border-radius: 12px; display: block; background: #faf9f7; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(0,0,0,0.05)';" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';">
+      <h3 style="margin-top: 0; color: var(--accent); font-size: 18px;">How to Save for a Down Payment on a House</h3>
+      <p style="font-size: 14px; color: var(--muted); margin-bottom: 0;">Learn practical and effective strategies to build your savings and reach your down payment goals faster.</p>
+    </a>
+    
+    <a href="/articles/personal-loans-vs-credit-cards.html" style="text-decoration: none; color: inherit; border: 1px solid var(--border); padding: 20px; border-radius: 12px; display: block; background: #faf9f7; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(0,0,0,0.05)';" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';">
+      <h3 style="margin-top: 0; color: var(--accent); font-size: 18px;">Personal Loans vs. Credit Cards</h3>
+      <p style="font-size: 14px; color: var(--muted); margin-bottom: 0;">Learn which financing option makes sense for your unique financial situation.</p>
+    </a>
+
+    <a href="/articles/pay-off-debt-faster.html" style="text-decoration: none; color: inherit; border: 1px solid var(--border); padding: 20px; border-radius: 12px; display: block; background: #faf9f7; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(0,0,0,0.05)';" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';">
+      <h3 style="margin-top: 0; color: var(--accent); font-size: 18px;">Strategies to Pay Off Debt</h3>
+      <p style="font-size: 14px; color: var(--muted); margin-bottom: 0;">Discover the most effective methods for eliminating debt, including the Debt Snowball and Debt Avalanche.</p>
+    </a>
+  </div>
+  <div style="text-align: center; margin-top: 30px;">
+    <a href="/articles/index.html" style="display: inline-block; padding: 10px 24px; border-radius: 8px; background: var(--accent); color: white; text-decoration: none; font-weight: 500;">View All Articles</a>
+  </div>
+</div>
 
 <!-- FAQ -->
 <div class="faq-section">
