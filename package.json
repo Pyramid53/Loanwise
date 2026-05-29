@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "vite build && cp robots.txt sitemap.xml favicon-32x32.png apple-touch-icon.png dist/ || true",
+    "build": "vite build && cp -r articles dist/ 2>/dev/null || true && cp robots.txt sitemap.xml favicon*.png favicon.ico apple-touch-icon.png dist/ || true",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit"
