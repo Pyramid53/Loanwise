@@ -520,6 +520,7 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
           </div>
         </div>
 
+        <div class="error-msg" id="err-mortgage" style="display:none; color: var(--red); font-size: 13px; font-weight: 600; margin-bottom: 12px; background: #fdeaea; padding: 10px; border-radius: 8px; border-left: 4px solid var(--red);"></div>
         <button class="calc-btn" onclick="calculate('mortgage')">Calculate Mortgage Payment</button>
       </div>
 
@@ -634,6 +635,7 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
             </div>
           </div>
         </div>
+        <div class="error-msg" id="err-personal" style="display:none; color: var(--red); font-size: 13px; font-weight: 600; margin-bottom: 12px; background: #fdeaea; padding: 10px; border-radius: 8px; border-left: 4px solid var(--red);"></div>
         <button class="calc-btn" onclick="calculate('personal')">Calculate Personal Loan</button>
       </div>
       <div class="results-card hidden" id="res-personal">
@@ -707,6 +709,7 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
             </div>
           </div>
         </div>
+        <div class="error-msg" id="err-car" style="display:none; color: var(--red); font-size: 13px; font-weight: 600; margin-bottom: 12px; background: #fdeaea; padding: 10px; border-radius: 8px; border-left: 4px solid var(--red);"></div>
         <button class="calc-btn" onclick="calculate('car')">Calculate Car Loan</button>
       </div>
       <div class="results-card hidden" id="res-car">
@@ -781,6 +784,7 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
             </div>
           </div>
         </div>
+        <div class="error-msg" id="err-student" style="display:none; color: var(--red); font-size: 13px; font-weight: 600; margin-bottom: 12px; background: #fdeaea; padding: 10px; border-radius: 8px; border-left: 4px solid var(--red);"></div>
         <button class="calc-btn" onclick="calculate('student')">Calculate Student Loan</button>
       </div>
       <div class="results-card hidden" id="res-student">
@@ -818,6 +822,7 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
             <div class="field"><label>Term (years)</label><div class="input-wrap has-suffix"><input type="number" id="cmp-b-term" value="30" min="1" max="50"><span class="suffix">yrs</span></div></div>
           </div>
         </div>
+        <div class="error-msg" id="err-compare" style="display:none; color: var(--red); font-size: 13px; font-weight: 600; margin-top: 10px; background: #fdeaea; padding: 10px; border-radius: 8px; border-left: 4px solid var(--red);"></div>
         <button class="calc-btn" style="margin-top:20px;" onclick="compareLoans()">Compare Loans</button>
         <div class="compare-result" id="compare-result"></div>
       </div>
@@ -1051,11 +1056,19 @@ function fmtPct(n) { return Math.round(n) + '%'; }
 
 // ── AMORT CALC ──
 function amortize(principal, annualRate, months, extraMonthly = 0, rateChangePerYear = 0) {
+  if (!isFinite(principal) || !isFinite(annualRate) || !isFinite(months) || months <= 0) {
+    throw new Error("Invalid calculation parameters.");
+  }
+
   let rate = annualRate;
   let r = rate / 100 / 12;
   let payment;
   if (r === 0) payment = principal / months;
   else payment = principal * (r * Math.pow(1+r, months)) / (Math.pow(1+r, months) - 1);
+
+  if (!isFinite(payment) || isNaN(payment)) {
+    throw new Error("Parameters caused a mathematical error (e.g. term too long or rate too high).");
+  }
 
   const initialPayment = payment;
   let balance = principal;
@@ -1088,51 +1101,57 @@ function amortize(principal, annualRate, months, extraMonthly = 0, rateChangePer
 
 // ── MAIN CALCULATE ──
 function calculate(type) {
+  const errEl = document.getElementById('err-' + type);
+  if (errEl) { errEl.style.display = 'none'; errEl.innerText = ''; }
+
   let principal, annualRate, years, extra = 0, rateChange = 0;
   let monthlyTaxIns = 0;
 
-  if (type === 'mortgage') {
-    const price = parseFloat(document.getElementById('m-price').value) || 0;
-    const down = parseFloat(document.getElementById('m-down').value) || 0;
-    principal = Math.max(price - down, 0);
-    annualRate = parseFloat(document.getElementById('m-rate').value) || 0;
-    years = parseInt(document.getElementById('m-term').value) || 0;
-    extra = parseFloat(document.getElementById('m-extra').value) || 0;
-    rateChange = parseFloat(document.getElementById('m-rate-change').value) || 0;
-    monthlyTaxIns = ((parseFloat(document.getElementById('m-tax').value) || 0) + (parseFloat(document.getElementById('m-ins').value) || 0)) / 12;
-  } else if (type === 'personal') {
-    const amount = parseFloat(document.getElementById('p-amount').value) || 0;
-    const pFee = parseFloat(document.getElementById('p-fee').value) || 0;
-    principal = amount + (amount * pFee / 100);
-    annualRate = parseFloat(document.getElementById('p-rate').value) || 0;
-    years = parseInt(document.getElementById('p-term').value) || 0;
-    rateChange = parseFloat(document.getElementById('p-rate-change').value) || 0;
-    extra = parseFloat(document.getElementById('p-extra').value) || 0;
-  } else if (type === 'car') {
-    const price = parseFloat(document.getElementById('c-price').value) || 0;
-    const down = parseFloat(document.getElementById('c-down').value) || 0;
-    const cTax = parseFloat(document.getElementById('c-tax').value) || 0;
-    const fees = parseFloat(document.getElementById('c-fees').value) || 0;
-    const totalPrice = price + (price * cTax / 100) + fees;
-    principal = Math.max(totalPrice - down, 0);
-    annualRate = parseFloat(document.getElementById('c-rate').value) || 0;
-    years = parseInt(document.getElementById('c-term').value) || 0;
-  } else if (type === 'student') {
-    const amount = parseFloat(document.getElementById('s-amount').value) || 0;
-    const defer = parseFloat(document.getElementById('s-defer').value) || 0;
-    principal = amount + defer;
-    annualRate = parseFloat(document.getElementById('s-rate').value) || 0;
-    years = parseInt(document.getElementById('s-term').value) || 0;
-    rateChange = parseFloat(document.getElementById('s-rate-change').value) || 0;
-    extra = parseFloat(document.getElementById('s-extra').value) || 0;
-  }
+  try {
+    if (type === 'mortgage') {
+      const price = parseFloat(document.getElementById('m-price').value) || 0;
+      const down = parseFloat(document.getElementById('m-down').value) || 0;
+      principal = Math.max(price - down, 0);
+      annualRate = parseFloat(document.getElementById('m-rate').value) || 0;
+      years = parseInt(document.getElementById('m-term').value) || 0;
+      extra = parseFloat(document.getElementById('m-extra').value) || 0;
+      rateChange = parseFloat(document.getElementById('m-rate-change').value) || 0;
+      monthlyTaxIns = ((parseFloat(document.getElementById('m-tax').value) || 0) + (parseFloat(document.getElementById('m-ins').value) || 0)) / 12;
+    } else if (type === 'personal') {
+      const amount = parseFloat(document.getElementById('p-amount').value) || 0;
+      const pFee = parseFloat(document.getElementById('p-fee').value) || 0;
+      principal = amount + (amount * pFee / 100);
+      annualRate = parseFloat(document.getElementById('p-rate').value) || 0;
+      years = parseInt(document.getElementById('p-term').value) || 0;
+      rateChange = parseFloat(document.getElementById('p-rate-change').value) || 0;
+      extra = parseFloat(document.getElementById('p-extra').value) || 0;
+    } else if (type === 'car') {
+      const price = parseFloat(document.getElementById('c-price').value) || 0;
+      const down = parseFloat(document.getElementById('c-down').value) || 0;
+      const cTax = parseFloat(document.getElementById('c-tax').value) || 0;
+      const fees = parseFloat(document.getElementById('c-fees').value) || 0;
+      const totalPrice = price + (price * cTax / 100) + fees;
+      principal = Math.max(totalPrice - down, 0);
+      annualRate = parseFloat(document.getElementById('c-rate').value) || 0;
+      years = parseInt(document.getElementById('c-term').value) || 0;
+    } else if (type === 'student') {
+      const amount = parseFloat(document.getElementById('s-amount').value) || 0;
+      const defer = parseFloat(document.getElementById('s-defer').value) || 0;
+      principal = amount + defer;
+      annualRate = parseFloat(document.getElementById('s-rate').value) || 0;
+      years = parseInt(document.getElementById('s-term').value) || 0;
+      rateChange = parseFloat(document.getElementById('s-rate-change').value) || 0;
+      extra = parseFloat(document.getElementById('s-extra').value) || 0;
+    }
 
-  if (!principal || !annualRate || !years) return;
+    if (!principal || principal <= 0) throw new Error("Please enter a valid loan amount or property price.");
+    if (!annualRate || annualRate <= 0) throw new Error("Please enter a valid interest rate.");
+    if (!years || years <= 0) throw new Error("Please enter a valid loan term in years.");
 
-  const months = years * 12;
-  const res = amortize(principal, annualRate, months, extra, rateChange);
+    const months = years * 12;
+    const res = amortize(principal, annualRate, months, extra, rateChange);
 
-  // Extra payment comparison
+    // Extra payment comparison
   let extraSavings = null;
   if (extra > 0) {
     const noExtra = amortize(principal, annualRate, months, 0, rateChange);
@@ -1430,6 +1449,15 @@ function calculate(type) {
   } catch(e) {}
 
   resEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  
+  } catch (e) {
+    if (errEl) {
+      errEl.style.display = 'block';
+      errEl.innerText = e.message || "An unexpected error occurred. Please check your inputs.";
+    } else {
+      console.error(e);
+    }
+  }
 }
 
 // ── AMORT TABLE ──
@@ -1487,19 +1515,23 @@ function setView(type, mode, btn) {
 
 // ── COMPARE ──
 function compareLoans() {
-  const aAmt = parseFloat(document.getElementById('cmp-a-amt').value) || 0;
-  const aRate = parseFloat(document.getElementById('cmp-a-rate').value) || 0;
-  const aTerm = parseInt(document.getElementById('cmp-a-term').value) || 0;
-  const bAmt = parseFloat(document.getElementById('cmp-b-amt').value) || 0;
-  const bRate = parseFloat(document.getElementById('cmp-b-rate').value) || 0;
-  const bTerm = parseInt(document.getElementById('cmp-b-term').value) || 0;
+  const errEl = document.getElementById('err-compare');
+  if (errEl) { errEl.style.display = 'none'; errEl.innerText = ''; }
 
-  if (!aAmt || !aRate || !aTerm || !bAmt || !bRate || !bTerm) return;
+  try {
+    const aAmt = parseFloat(document.getElementById('cmp-a-amt').value) || 0;
+    const aRate = parseFloat(document.getElementById('cmp-a-rate').value) || 0;
+    const aTerm = parseInt(document.getElementById('cmp-a-term').value) || 0;
+    const bAmt = parseFloat(document.getElementById('cmp-b-amt').value) || 0;
+    const bRate = parseFloat(document.getElementById('cmp-b-rate').value) || 0;
+    const bTerm = parseInt(document.getElementById('cmp-b-term').value) || 0;
 
-  const resA = amortize(aAmt, aRate, aTerm * 12);
-  const resB = amortize(bAmt, bRate, bTerm * 12);
+    if (!aAmt || !aRate || !aTerm || !bAmt || !bRate || !bTerm) throw new Error("Please fill out all fields with valid numbers to compare.");
 
-  const aWins = resA.totalPaid < resB.totalPaid;
+    const resA = amortize(aAmt, aRate, aTerm * 12);
+    const resB = amortize(bAmt, bRate, bTerm * 12);
+
+    const aWins = resA.totalPaid < resB.totalPaid;
 
   document.getElementById('cc1').className = 'compare-card' + (aWins ? ' winner' : '');
   document.getElementById('cc2').className = 'compare-card' + (!aWins ? ' winner' : '');
@@ -1540,6 +1572,13 @@ function compareLoans() {
     </p>
     <div class="insights-box show" style="margin-top: 14px;">${insightsHtml}</div>
   `;
+  } catch (e) {
+    if (errEl) {
+      errEl.style.display = 'block';
+      errEl.innerText = e.message || "An unexpected error occurred. Please check your inputs.";
+      document.getElementById('compare-result').classList.remove('show');
+    }
+  }
 }
 
 // ── FAQ ──

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>500 - Server Error | DebtCalc</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f6f3;
+  --surface: #ffffff;
+  --surface2: #f0efe9;
+  --border: #e2e0d8;
+  --accent: #1a3a2a;
+  --accent2: #2d6a4f;
+  --gold: #c9a84c;
+  --gold2: #a8873a;
+  --text: #1a1a18;
+  --muted: #6b6b63;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;line-height:1.6;font-size:15px; display:flex; flex-direction:column; min-height:100vh;}
+header{background:var(--accent);color:#fff;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.5px; text-decoration:none;}
+.logo span{color:var(--gold);}
+.hero{background:var(--accent);color:#fff;padding:80px 32px 100px;text-align:center; flex:1; display:flex; flex-direction:column; justify-content:center;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(52px,8vw,80px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.hero h1 em{color:var(--gold);font-style:normal;}
+.hero p{color:rgba(255,255,255,0.7);font-size:18px;max-width:560px;margin:0 auto 28px;}
+.badge{background:var(--gold);border:1px solid var(--gold2);color:var(--text);padding:12px 24px;border-radius:50px;font-size:16px;font-weight:600; text-decoration:none; transition:transform 0.2s; display:inline-block;}
+.badge:hover{transform:translateY(-2px); background:var(--gold2);}
+</style>
+</head>
+<body>
+<header>
+  <a href="/" class="logo">Debt<span>Calc</span></a>
+</header>
+<div class="hero">
+  <h1>500<br><em>Internal Server Error</em></h1>
+  <p>Something went wrong on our end. Please try again later.</p>
+  <div>
+    <a href="/" class="badge">Return to Calculator</a>
+  </div>
+</div>
+</body>
+</html>
