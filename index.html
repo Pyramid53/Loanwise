@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DebtCalc - Free Mortgage & Loan Calculator 2026 | Monthly Payment & Amortization</title>
-<meta name="description" content="Use DebtCalc's free online calculator to easily estimate mortgage, car, personal, and student loan monthly payments. See full amortization schedules instantly.">
-<meta name="keywords" content="mortgage calculator, debtcalc, loan calculator, monthly payment calculator, amortization schedule, car loan calculator, personal loan calculator, student loan calculator, interest rate calculator">
+<title>DebtCalc - Advanced Loan Calculator & Expert Insights</title>
+<meta name="description" content="Use DebtCalc's free online calculator to easily estimate mortgage, car, personal, and student loan monthly payments with smart financial insights and amortization.">
+<meta name="keywords" content="mortgage calculator, debtcalc, loan calculator, monthly payment calculator, amortization schedule, car loan calculator, personal loan calculator, student loan calculator, financial insights">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="DebtCalc">
 <meta name="google-site-verification" content="Pgz69yU2dRmvZmr_HZQcH8Dfkbgx3WxXkhi2V8w8Uw4" />
@@ -196,11 +196,19 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .stat-value.red{color:var(--red);}
 .stat-value.green{color:var(--green);}
 
-/* SAVINGS BANNER */
+/* SAVINGS BANNER & INSIGHTS */
 .savings-banner{background:linear-gradient(135deg,#e8f5e9,#f1f8e9);border:1px solid #a5d6a7;border-radius:var(--radius);padding:14px 18px;margin-bottom:20px;display:none;}
 .savings-banner.show{display:block;}
 .savings-banner p{font-size:13px;color:#1b5e20;line-height:1.6;}
 .savings-banner strong{font-weight:700;}
+
+.insights-box{background:var(--surface2);border-left:4px solid var(--accent);border-radius:var(--radius);padding:18px;margin-bottom:20px;display:none;}
+.insights-box.show{display:block;}
+.insights-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.insights-list{list-style:none;padding:0;margin:0;}
+.insights-list li{position:relative;padding-left:22px;font-size:13px;color:var(--text);margin-bottom:8px;line-height:1.6;}
+.insights-list li::before{content:'💡';position:absolute;left:0;top:-1px;font-size:14px;}
+.insights-list li strong{color:var(--accent);font-weight:600;}
 
 /* PROGRESS */
 .prog-wrap{margin-bottom:14px;}
@@ -354,6 +362,26 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
 .modal-body a:hover {
   text-decoration: underline;
 }
+@media print {
+  body { background: #fff; color: #000; margin: 0; padding: 0; font-family: 'Outfit', sans-serif; }
+  header, .hero, .tabs, .input-card, .footer-menu, .faq-sec, footer, .action-row, script, noscript, .view-toggle { display: none !important; }
+  .calculator-card { box-shadow: none; border: none; padding: 0; max-width: 100%; margin: 0; background: #fff; }
+  .results-card { display: block !important; box-shadow: none; border: none; padding: 0; padding-top: 20px; }
+  .charts-row { display: block; border: none; background: transparent; padding: 0; margin-bottom: 20px; }
+  .charts-row > div { display: inline-block; vertical-align: top; width: 48%; }
+  .bar-chart-wrap { page-break-inside: avoid; }
+  .insights-box { border: 1px solid #ccc; background: white; page-break-inside: avoid; }
+  .amort-scroll { max-height: none !important; overflow: visible !important; border: 1px solid #ccc; page-break-inside: auto; }
+  table { page-break-inside: auto; }
+  tr { page-break-inside: avoid; page-break-after: auto; }
+  thead { display: table-header-group; }
+  tfoot { display: table-footer-group; }
+  .stat.primary { background: white !important; color: black !important; border: 1px solid #ccc !important; }
+  .stat.primary .stat-label, .stat.primary .stat-sub { color: #555 !important; }
+  .stat.primary .stat-value { color: #000 !important; }
+  .savings-banner { border: 1px solid #ccc !important; background: white !important; color: black !important; }
+  canvas { max-width: 100% !important; height: auto !important; }
+}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1174615331479460"
      crossorigin="anonymous"></script>
@@ -385,9 +413,9 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
 <!-- HERO -->
 <div class="hero">
   <h1>Advanced Mortgage &<br><em>Loan Payment Calculator</em></h1>
-  <p>Instantly calculate monthly payments, analyze total interest, and generate complete amortization schedules for mortgages, auto, personal, and student loans.</p>
+  <p>Instantly calculate monthly payments, analyze total interest, and get tailored expert financial insights for mortgages, auto, personal, and student loans.</p>
   <div class="hero-badges">
-    <span class="badge">✓ No signup required</span>
+    <span class="badge">✓ Smart Expert Insights</span>
     <span class="badge">✓ 100% free forever</span>
     <span class="badge">✓ Instant results</span>
     <span class="badge">✓ All loan types</span>
@@ -458,11 +486,37 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
           </div>
         </div>
 
-        <div class="extra-section">
-          <label>Extra Monthly Payment <span class="tip" data-tip="Pay extra each month to reduce your loan term and save on interest">?</span></label>
-          <div class="input-wrap has-prefix">
-            <span class="prefix curr-sym">$</span>
-            <input type="number" id="m-extra" value="0" min="0" step="50">
+        <div class="field-row">
+          <div class="field">
+            <label>Yearly Property Tax <span class="tip" data-tip="Estimated annual property tax">?</span></label>
+            <div class="input-wrap has-prefix">
+              <span class="prefix curr-sym">$</span>
+              <input type="number" id="m-tax" value="3600" min="0" step="100">
+            </div>
+          </div>
+          <div class="field">
+            <label>Home Insurance <span class="tip" data-tip="Estimated annual home insurance premium">?</span></label>
+            <div class="input-wrap has-prefix">
+              <span class="prefix curr-sym">$</span>
+              <input type="number" id="m-ins" value="1200" min="0" step="100">
+            </div>
+          </div>
+        </div>
+
+        <div class="field-row" style="margin-bottom: 24px;">
+          <div class="field">
+            <label>Yearly Rate Change <span class="tip" data-tip="Variable rate adjustment per year (e.g., +0.25%)">?</span></label>
+            <div class="input-wrap has-suffix">
+              <input type="number" id="m-rate-change" value="0" step="0.1">
+              <span class="suffix">%</span>
+            </div>
+          </div>
+          <div class="field">
+            <label>Extra Monthly Pmt <span class="tip" data-tip="Pay extra each month to reduce your loan term and save on interest">?</span></label>
+            <div class="input-wrap has-prefix">
+              <span class="prefix curr-sym">$</span>
+              <input type="number" id="m-extra" value="0" min="0" step="50">
+            </div>
           </div>
         </div>
 
@@ -473,12 +527,12 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
         <div class="section-divider"></div>
 
         <div class="action-row">
-          <button class="action-btn" onclick="copyResults('mortgage')">📋 Copy Results</button>
-          <button class="action-btn" onclick="window.print()">🖨️ Print</button>
+          <button class="action-btn" onclick="window.print()">🖨️ Print Full Report</button>
         </div>
 
         <div class="stats-grid" id="sg-mortgage"></div>
         <div class="savings-banner" id="sav-mortgage"></div>
+        <div class="insights-box" id="insights-mortgage"></div>
 
         <div class="prog-wrap">
           <div class="prog-label"><span>Principal</span><span id="pp-mortgage">—</span></div>
@@ -510,7 +564,7 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
             </div>
           </div>
           <div class="amort-scroll">
-            <table><thead><tr><th>Period</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead>
+            <table><thead><tr><th>Period</th><th>Rate</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead>
             <tbody id="at-mortgage"></tbody></table>
           </div>
         </div>
@@ -546,30 +600,55 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
             <input type="range" id="ps-rate" min="1" max="40" step="0.1" value="9.5" oninput="syncR('ps-rate','p-rate')">
           </div>
         </div>
-        <div class="field">
-          <label>Loan Term</label>
-          <div class="input-wrap has-suffix">
-            <input type="number" id="p-term" value="5" min="1" max="40" oninput="sync('p-term','ps-term')">
-            <span class="suffix">years</span>
+        <div class="field-row">
+          <div class="field">
+            <label>Loan Term</label>
+            <div class="input-wrap has-suffix">
+              <input type="number" id="p-term" value="5" min="1" max="40" oninput="sync('p-term','ps-term')">
+              <span class="suffix">years</span>
+            </div>
+            <input type="range" id="ps-term" min="1" max="40" step="1" value="5" oninput="syncR('ps-term','p-term')">
+            <div class="range-labels"><span>1yr</span><span>10yrs</span></div>
           </div>
-          <input type="range" id="ps-term" min="1" max="40" step="1" value="5" oninput="syncR('ps-term','p-term')">
-          <div class="range-labels"><span>1yr</span><span>10yrs</span></div>
+          <div class="field">
+            <label>Origination Fee (%)</label>
+            <div class="input-wrap has-suffix">
+              <input type="number" id="p-fee" value="0" step="0.5" min="0">
+              <span class="suffix">%</span>
+            </div>
+          </div>
+        </div>
+        <div class="field-row" style="margin-bottom: 24px;">
+          <div class="field">
+            <label>Yearly Rate Change (%)</label>
+            <div class="input-wrap has-suffix">
+              <input type="number" id="p-rate-change" value="0" step="0.1">
+              <span class="suffix">%</span>
+            </div>
+          </div>
+          <div class="field">
+            <label>Extra Monthly Pmt</label>
+            <div class="input-wrap has-prefix">
+              <span class="prefix curr-sym">$</span>
+              <input type="number" id="p-extra" value="0" min="0" step="50">
+            </div>
+          </div>
         </div>
         <button class="calc-btn" onclick="calculate('personal')">Calculate Personal Loan</button>
       </div>
       <div class="results-card hidden" id="res-personal">
         <div class="section-divider"></div>
         <div class="action-row">
-          <button class="action-btn" onclick="copyResults('personal')">📋 Copy Results</button>
-          <button class="action-btn" onclick="window.print()">🖨️ Print</button>
+          <button class="action-btn" onclick="window.print()">🖨️ Print Full Report</button>
         </div>
         <div class="stats-grid" id="sg-personal"></div>
+        <div class="insights-box" id="insights-personal"></div>
         <div class="prog-wrap"><div class="prog-label"><span>Principal</span><span id="pp-personal">—</span></div><div class="prog-bar"><div class="prog-fill" id="pb-p-personal" style="background:var(--green);width:0%"></div></div></div>
         <div class="prog-wrap"><div class="prog-label"><span>Interest</span><span id="pi-personal">—</span></div><div class="prog-bar"><div class="prog-fill" id="pb-i-personal" style="background:var(--red);width:0%"></div></div></div>
         <div class="charts-row"><div style="position:relative;width:140px;height:140px;"><canvas id="donut-personal" role="img" aria-label="Principal vs interest donut chart"></canvas></div><div class="chart-legend" id="leg-personal"></div></div>
         <div class="amort-wrap">
           <div class="amort-header"><span class="amort-title">Amortization Schedule</span><div class="view-toggle"><button class="vt-btn active" onclick="setView('personal','yearly',this)">Yearly</button><button class="vt-btn" onclick="setView('personal','monthly',this)">Monthly</button></div></div>
-          <div class="amort-scroll"><table><thead><tr><th>Period</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody id="at-personal"></tbody></table></div>
+          <div class="amort-scroll"><table><thead><tr><th>Period</th><th>Rate</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody id="at-personal"></tbody></table></div>
         </div>
       </div>
     </div>
@@ -612,21 +691,37 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
             <input type="range" id="cs-term" min="1" max="20" step="1" value="5" oninput="syncR('cs-term','c-term')">
           </div>
         </div>
+        <div class="field-row" style="margin-bottom: 24px;">
+          <div class="field">
+            <label>Sales Tax (%)</label>
+            <div class="input-wrap has-suffix">
+              <input type="number" id="c-tax" value="0" step="0.5" min="0">
+              <span class="suffix">%</span>
+            </div>
+          </div>
+          <div class="field">
+            <label>Dealer Fees & Extras ($)</label>
+            <div class="input-wrap has-prefix">
+              <span class="prefix curr-sym">$</span>
+              <input type="number" id="c-fees" value="0" min="0" step="100">
+            </div>
+          </div>
+        </div>
         <button class="calc-btn" onclick="calculate('car')">Calculate Car Loan</button>
       </div>
       <div class="results-card hidden" id="res-car">
         <div class="section-divider"></div>
         <div class="action-row">
-          <button class="action-btn" onclick="copyResults('car')">📋 Copy Results</button>
-          <button class="action-btn" onclick="window.print()">🖨️ Print</button>
+          <button class="action-btn" onclick="window.print()">🖨️ Print Full Report</button>
         </div>
         <div class="stats-grid" id="sg-car"></div>
+        <div class="insights-box" id="insights-car"></div>
         <div class="prog-wrap"><div class="prog-label"><span>Principal</span><span id="pp-car">—</span></div><div class="prog-bar"><div class="prog-fill" id="pb-p-car" style="background:var(--green);width:0%"></div></div></div>
         <div class="prog-wrap"><div class="prog-label"><span>Interest</span><span id="pi-car">—</span></div><div class="prog-bar"><div class="prog-fill" id="pb-i-car" style="background:var(--red);width:0%"></div></div></div>
         <div class="charts-row"><div style="position:relative;width:140px;height:140px;"><canvas id="donut-car" role="img" aria-label="Principal vs interest donut chart"></canvas></div><div class="chart-legend" id="leg-car"></div></div>
         <div class="amort-wrap">
           <div class="amort-header"><span class="amort-title">Amortization Schedule</span><div class="view-toggle"><button class="vt-btn active" onclick="setView('car','yearly',this)">Yearly</button><button class="vt-btn" onclick="setView('car','monthly',this)">Monthly</button></div></div>
-          <div class="amort-scroll"><table><thead><tr><th>Period</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody id="at-car"></tbody></table></div>
+          <div class="amort-scroll"><table><thead><tr><th>Period</th><th>Rate</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody id="at-car"></tbody></table></div>
         </div>
       </div>
     </div>
@@ -652,30 +747,55 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
             <input type="range" id="ss-rate" min="0.5" max="50" step="0.05" value="5.5" oninput="syncR('ss-rate','s-rate')">
           </div>
         </div>
-        <div class="field">
-          <label>Repayment Term</label>
-          <div class="input-wrap has-suffix">
-            <input type="number" id="s-term" value="10" min="1" max="40" oninput="sync('s-term','ss-term')">
-            <span class="suffix">years</span>
+        <div class="field-row">
+          <div class="field">
+            <label>Repayment Term</label>
+            <div class="input-wrap has-suffix">
+              <input type="number" id="s-term" value="10" min="1" max="40" oninput="sync('s-term','ss-term')">
+              <span class="suffix">years</span>
+            </div>
+            <input type="range" id="ss-term" min="1" max="40" step="1" value="10" oninput="syncR('ss-term','s-term')">
+            <div class="range-labels"><span>1yr</span><span>25yrs</span></div>
           </div>
-          <input type="range" id="ss-term" min="1" max="40" step="1" value="10" oninput="syncR('ss-term','s-term')">
-          <div class="range-labels"><span>1yr</span><span>25yrs</span></div>
+          <div class="field">
+            <label>Deferred Interest ($)</label>
+            <div class="input-wrap has-prefix">
+              <span class="prefix curr-sym">$</span>
+              <input type="number" id="s-defer" value="0" min="0" step="100">
+            </div>
+          </div>
+        </div>
+        <div class="field-row" style="margin-bottom: 24px;">
+          <div class="field">
+            <label>Yearly Rate Change (%)</label>
+            <div class="input-wrap has-suffix">
+              <input type="number" id="s-rate-change" value="0" step="0.1">
+              <span class="suffix">%</span>
+            </div>
+          </div>
+          <div class="field">
+            <label>Extra Monthly Pmt</label>
+            <div class="input-wrap has-prefix">
+              <span class="prefix curr-sym">$</span>
+              <input type="number" id="s-extra" value="0" min="0" step="50">
+            </div>
+          </div>
         </div>
         <button class="calc-btn" onclick="calculate('student')">Calculate Student Loan</button>
       </div>
       <div class="results-card hidden" id="res-student">
         <div class="section-divider"></div>
         <div class="action-row">
-          <button class="action-btn" onclick="copyResults('student')">📋 Copy Results</button>
-          <button class="action-btn" onclick="window.print()">🖨️ Print</button>
+          <button class="action-btn" onclick="window.print()">🖨️ Print Full Report</button>
         </div>
         <div class="stats-grid" id="sg-student"></div>
+        <div class="insights-box" id="insights-student"></div>
         <div class="prog-wrap"><div class="prog-label"><span>Principal</span><span id="pp-student">—</span></div><div class="prog-bar"><div class="prog-fill" id="pb-p-student" style="background:var(--green);width:0%"></div></div></div>
         <div class="prog-wrap"><div class="prog-label"><span>Interest</span><span id="pi-student">—</span></div><div class="prog-bar"><div class="prog-fill" id="pb-i-student" style="background:var(--red);width:0%"></div></div></div>
         <div class="charts-row"><div style="position:relative;width:140px;height:140px;"><canvas id="donut-student" role="img" aria-label="Principal vs interest donut chart"></canvas></div><div class="chart-legend" id="leg-student"></div></div>
         <div class="amort-wrap">
           <div class="amort-header"><span class="amort-title">Amortization Schedule</span><div class="view-toggle"><button class="vt-btn active" onclick="setView('student','yearly',this)">Yearly</button><button class="vt-btn" onclick="setView('student','monthly',this)">Monthly</button></div></div>
-          <div class="amort-scroll"><table><thead><tr><th>Period</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody id="at-student"></tbody></table></div>
+          <div class="amort-scroll"><table><thead><tr><th>Period</th><th>Rate</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody id="at-student"></tbody></table></div>
         </div>
       </div>
     </div>
@@ -930,17 +1050,28 @@ function fmt(n) {
 function fmtPct(n) { return Math.round(n) + '%'; }
 
 // ── AMORT CALC ──
-function amortize(principal, annualRate, months, extraMonthly = 0) {
-  const r = annualRate / 100 / 12;
+function amortize(principal, annualRate, months, extraMonthly = 0, rateChangePerYear = 0) {
+  let rate = annualRate;
+  let r = rate / 100 / 12;
   let payment;
   if (r === 0) payment = principal / months;
   else payment = principal * (r * Math.pow(1+r, months)) / (Math.pow(1+r, months) - 1);
 
+  const initialPayment = payment;
   let balance = principal;
   const rows = [];
   let totalPaid = 0, totalInterest = 0, actualMonths = 0;
 
   for (let m = 1; m <= months; m++) {
+    if (m > 1 && (m - 1) % 12 === 0 && rateChangePerYear !== 0) {
+      rate += rateChangePerYear;
+      if (rate < 0) rate = 0;
+      r = rate / 100 / 12;
+      const remainingMonths = months - m + 1;
+      if (r === 0) payment = balance / remainingMonths;
+      else payment = balance * (r * Math.pow(1+r, remainingMonths)) / (Math.pow(1+r, remainingMonths) - 1);
+    }
+
     const intPart = balance * r;
     let prinPart = payment - intPart + (extraMonthly || 0);
     if (prinPart > balance) prinPart = balance;
@@ -948,16 +1079,17 @@ function amortize(principal, annualRate, months, extraMonthly = 0) {
     totalInterest += intPart;
     totalPaid += intPart + prinPart;
     actualMonths = m;
-    rows.push({ month: m, principal: prinPart, interest: intPart, balance });
+    rows.push({ month: m, rate: rate, scheduledPayment: payment + (extraMonthly || 0), principal: prinPart, interest: intPart, balance });
     if (balance <= 0) break;
   }
 
-  return { payment, totalPaid, totalInterest, rows, actualMonths };
+  return { payment: initialPayment, totalPaid, totalInterest, rows, actualMonths };
 }
 
 // ── MAIN CALCULATE ──
 function calculate(type) {
-  let principal, annualRate, years, extra = 0;
+  let principal, annualRate, years, extra = 0, rateChange = 0;
+  let monthlyTaxIns = 0;
 
   if (type === 'mortgage') {
     const price = parseFloat(document.getElementById('m-price').value) || 0;
@@ -966,31 +1098,44 @@ function calculate(type) {
     annualRate = parseFloat(document.getElementById('m-rate').value) || 0;
     years = parseInt(document.getElementById('m-term').value) || 0;
     extra = parseFloat(document.getElementById('m-extra').value) || 0;
+    rateChange = parseFloat(document.getElementById('m-rate-change').value) || 0;
+    monthlyTaxIns = ((parseFloat(document.getElementById('m-tax').value) || 0) + (parseFloat(document.getElementById('m-ins').value) || 0)) / 12;
   } else if (type === 'personal') {
-    principal = parseFloat(document.getElementById('p-amount').value) || 0;
+    const amount = parseFloat(document.getElementById('p-amount').value) || 0;
+    const pFee = parseFloat(document.getElementById('p-fee').value) || 0;
+    principal = amount + (amount * pFee / 100);
     annualRate = parseFloat(document.getElementById('p-rate').value) || 0;
     years = parseInt(document.getElementById('p-term').value) || 0;
+    rateChange = parseFloat(document.getElementById('p-rate-change').value) || 0;
+    extra = parseFloat(document.getElementById('p-extra').value) || 0;
   } else if (type === 'car') {
     const price = parseFloat(document.getElementById('c-price').value) || 0;
     const down = parseFloat(document.getElementById('c-down').value) || 0;
-    principal = Math.max(price - down, 0);
+    const cTax = parseFloat(document.getElementById('c-tax').value) || 0;
+    const fees = parseFloat(document.getElementById('c-fees').value) || 0;
+    const totalPrice = price + (price * cTax / 100) + fees;
+    principal = Math.max(totalPrice - down, 0);
     annualRate = parseFloat(document.getElementById('c-rate').value) || 0;
     years = parseInt(document.getElementById('c-term').value) || 0;
   } else if (type === 'student') {
-    principal = parseFloat(document.getElementById('s-amount').value) || 0;
+    const amount = parseFloat(document.getElementById('s-amount').value) || 0;
+    const defer = parseFloat(document.getElementById('s-defer').value) || 0;
+    principal = amount + defer;
     annualRate = parseFloat(document.getElementById('s-rate').value) || 0;
     years = parseInt(document.getElementById('s-term').value) || 0;
+    rateChange = parseFloat(document.getElementById('s-rate-change').value) || 0;
+    extra = parseFloat(document.getElementById('s-extra').value) || 0;
   }
 
   if (!principal || !annualRate || !years) return;
 
   const months = years * 12;
-  const res = amortize(principal, annualRate, months, extra);
+  const res = amortize(principal, annualRate, months, extra, rateChange);
 
   // Extra payment comparison
   let extraSavings = null;
   if (extra > 0) {
-    const noExtra = amortize(principal, annualRate, months, 0);
+    const noExtra = amortize(principal, annualRate, months, 0, rateChange);
     const savedInterest = noExtra.totalInterest - res.totalInterest;
     const savedMonths = noExtra.actualMonths - res.actualMonths;
     extraSavings = { savedInterest, savedMonths };
@@ -1007,11 +1152,15 @@ function calculate(type) {
   const pctP = Math.round((principal / res.totalPaid) * 100);
   const pctI = 100 - pctP;
 
+  const fullMonthlyCalc = res.payment + monthlyTaxIns;
+  const monthlySubText = monthlyTaxIns > 0 ? `Includes ${fmt(monthlyTaxIns)} tax/ins` : `${years} years × 12 months`;
+  const rateHint = rateChange !== 0 ? ` (Initial, changes ${rateChange > 0 ? '+':''}${rateChange}%/yr)` : '';
+
   document.getElementById('sg-' + type).innerHTML = `
     <div class="stat primary">
       <div class="stat-label">Monthly Payment</div>
-      <div class="stat-value">${fmt(res.payment)}</div>
-      <div class="stat-sub">${years} years × 12 months</div>
+      <div class="stat-value">${fmt(fullMonthlyCalc)}</div>
+      <div class="stat-sub">${monthlySubText}${rateHint}</div>
     </div>
     <div class="stat">
       <div class="stat-label">Loan Principal</div>
@@ -1031,14 +1180,82 @@ function calculate(type) {
   `;
 
   // Savings banner
-  if (extraSavings) {
+  if (extraSavings && extraSavings.savedInterest > 0) {
     const sav = document.getElementById('sav-' + type);
     if (sav) {
       const yrs = Math.floor(extraSavings.savedMonths / 12);
       const mos = extraSavings.savedMonths % 12;
-      sav.innerHTML = `<p>💚 <strong>Extra payment savings:</strong> By paying <strong>${fmt(extra)}/month</strong> extra, you save <strong>${fmt(extraSavings.savedInterest)}</strong> in interest and pay off your loan <strong>${yrs > 0 ? yrs + ' years ' : ''}${mos > 0 ? mos + ' months' : ''} early.</strong></p>`;
+      let timeStr = [];
+      if (yrs > 0) timeStr.push(yrs + ' years');
+      if (mos > 0) timeStr.push(mos + ' months');
+      sav.innerHTML = `<p>💚 <strong>Extra payment savings:</strong> By paying <strong>${fmt(extra)}/month</strong> extra, you save <strong>${fmt(extraSavings.savedInterest)}</strong> in interest and pay off your loan <strong>${timeStr.join(' and ')} early.</strong></p>`;
       sav.classList.add('show');
     }
+  } else {
+    const sav = document.getElementById('sav-' + type);
+    if (sav) sav.classList.remove('show');
+  }
+
+  // Professional Insights
+  const ins = document.getElementById('insights-' + type);
+  if (ins) {
+    let insightsHtml = '<div class="insights-title">🌟 Expert Financial Insights</div><ul class="insights-list">';
+    
+    if (type === 'mortgage') {
+      const price = parseFloat(document.getElementById('m-price').value) || 0;
+      const down = parseFloat(document.getElementById('m-down').value) || 0;
+      const downPct = price > 0 ? (down / price) * 100 : 0;
+      
+      if (downPct < 20) {
+        insightsHtml += `<li><strong>PMI Alert:</strong> Your down payment is ${downPct.toFixed(1)}%. Since it is under 20%, lenders will typically require Private Mortgage Insurance (PMI), which could add $${Math.round(price * 0.005 / 12)} - $${Math.round(price * 0.01 / 12)} to your monthly payment.</li>`;
+        insightsHtml += `<li><strong>Target Down Payment:</strong> To avoid PMI entirely, aim for a down payment of ${fmt(price * 0.20)}.</li>`;
+      } else {
+        insightsHtml += `<li><strong>Great Job!</strong> Your ${downPct.toFixed(1)}% down payment means you avoid PMI, potentially saving thousands over the first few years of your mortgage.</li>`;
+      }
+      
+      const tenPctMore = res.payment * 1.1;
+      const amort10 = amortize(principal, annualRate, months, res.payment * 0.1 + extra, rateChange);
+      const saved10 = res.totalInterest - amort10.totalInterest;
+      if(saved10 > 0) {
+        insightsHtml += `<li><strong>Wealth Building:</strong> If you round up your payment to ${fmt(tenPctMore + extra + monthlyTaxIns)} (+10%), you would save an additional <strong>${fmt(saved10)}</strong> in lifetime interest.</li>`;
+      }
+    } 
+    else if (type === 'personal') {
+      insightsHtml += `<li><strong>Debt-to-Income:</strong> Ensure this ${fmt(res.payment)} payment keeps your total monthly debt payments under 36% of your gross monthly income.</li>`;
+      if (annualRate > 15) {
+        insightsHtml += `<li><strong>High Rate Warning:</strong> At ${annualRate}%, this is a high-interest loan. Prioritize paying this off aggressively to avoid paying <strong>${fmt(res.totalInterest)}</strong> in interest.</li>`;
+      } else {
+        insightsHtml += `<li><strong>Interest Optimization:</strong> Even though your rate is reasonable at ${annualRate}%, paying an extra $50 a month would save you money and clear the debt faster.</li>`;
+      }
+    }
+    else if (type === 'car') {
+      const price = parseFloat(document.getElementById('c-price').value) || 0;
+      const down = parseFloat(document.getElementById('c-down').value) || 0;
+      const downPct = price > 0 ? (down / price) * 100 : 0;
+      
+      insightsHtml += `<li><strong>True Cost:</strong> You negotiate the price at ${fmt(price)}, but with financing over ${years} years, the <em>actual</em> cost of the car will be <strong>${fmt(res.totalPaid + down)}</strong>.</li>`;
+      
+      if (downPct < 20 || years > 4) {
+        insightsHtml += `<li><strong>The 20/4/10 Rule:</strong> Financial experts recommend 20% down (${fmt(price*0.2)}), a max 4-year term, and payments under 10% of gross income. Longer terms greatly increase the risk of being "underwater" (owing more than the car is worth).</li>`;
+      } else {
+        insightsHtml += `<li><strong>Smart Financing:</strong> You are following the golden rules of car buying (strong down payment, reasonable term). This protects you from negative equity!</li>`;
+      }
+    }
+    else if (type === 'student') {
+      insightsHtml += `<li><strong>Daily Interest:</strong> Student loans typically accrue interest daily. This loan grows by about <strong>${fmt((principal * (annualRate/100)) / 365)}</strong> every single day.</li>`;
+      if (annualRate > 6) {
+        insightsHtml += `<li><strong>Refinance Potential:</strong> With a rate of ${annualRate}%, if your credit is good and you are employed, you might be able to refinance to a lower rate, significantly dropping your total cost.</li>`;
+      }
+      const extra50 = amortize(principal, annualRate, months, 50, rateChange);
+      const saved50 = res.totalInterest - extra50.totalInterest;
+      if(saved50 > 0) {
+          insightsHtml += `<li><strong>The $50 Effect:</strong> Applying just an extra $50 a month towards the principal would save you <strong>${fmt(saved50)}</strong> over the life of the loan.</li>`;
+      }
+    }
+
+    insightsHtml += '</ul>';
+    ins.innerHTML = insightsHtml;
+    ins.classList.add('show');
   }
 
   // Progress bars
@@ -1052,53 +1269,147 @@ function calculate(type) {
   // Donut chart
   if (donutCharts[type]) donutCharts[type].destroy();
   const dCtx = document.getElementById('donut-' + type).getContext('2d');
+  
+  const gradP = dCtx.createLinearGradient(0, 0, 0, 400);
+  gradP.addColorStop(0, '#2ecc71');
+  gradP.addColorStop(1, '#1e8449');
+  
+  const gradI = dCtx.createLinearGradient(0, 0, 0, 400);
+  gradI.addColorStop(0, '#e74c3c');
+  gradI.addColorStop(1, '#c0392b');
+
   donutCharts[type] = new Chart(dCtx, {
     type: 'doughnut',
     data: {
       labels: ['Principal', 'Interest'],
-      datasets: [{ data: [Math.round(principal), Math.round(res.totalInterest)], backgroundColor: ['#1e8449', '#c0392b'], borderWidth: 2, borderColor: '#fff' }]
+      datasets: [{ data: [Math.round(principal), Math.round(res.totalInterest)], backgroundColor: [gradP, gradI], borderWidth: 0, hoverOffset: 4 }]
     },
-    options: { responsive: true, maintainAspectRatio: true, cutout: '68%', plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' ' + fmt(ctx.raw) } } } }
+    options: { 
+      responsive: true, 
+      maintainAspectRatio: true, 
+      cutout: '72%', 
+      plugins: { 
+        legend: { display: false }, 
+        tooltip: { 
+          backgroundColor: 'rgba(26, 58, 42, 0.95)',
+          titleFont: { family: 'Outfit', size: 13 },
+          bodyFont: { family: 'Outfit', size: 14, weight: 'bold' },
+          padding: 12,
+          cornerRadius: 8,
+          callbacks: { label: ctx => ' ' + fmt(ctx.raw) } 
+        } 
+      } 
+    }
   });
 
   // Legend
+  const fmtP = fmt(principal);
+  const fmtI = fmt(res.totalInterest);
+  const fmtT = fmt(res.totalPaid);
   document.getElementById('leg-' + type).innerHTML = `
-    <div class="legend-item"><div class="legend-dot" style="background:#1e8449"></div><span class="legend-label">Principal</span><span class="legend-val">${fmt(principal)}</span></div>
-    <div class="legend-item"><div class="legend-dot" style="background:#c0392b"></div><span class="legend-label">Interest</span><span class="legend-val">${fmt(res.totalInterest)}</span></div>
-    <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div><span class="legend-label">Total</span><span class="legend-val">${fmt(res.totalPaid)}</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:linear-gradient(135deg, #2ecc71, #1e8449)"></div><span class="legend-label">Principal</span><span class="legend-val">${fmtP}</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:linear-gradient(135deg, #e74c3c, #c0392b)"></div><span class="legend-label">Interest</span><span class="legend-val">${fmtI}</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div><span class="legend-label">Total</span><span class="legend-val">${fmtT}</span></div>
   `;
 
   // Bar chart (mortgage only)
   if (type === 'mortgage') {
     const yearlyBalances = [];
+    const yearlyPrincipal = [];
+    const yearlyInterest = [];
     const yearLabels = [];
-    let bal = principal;
-    const r = annualRate / 100 / 12;
+    
+    // Group by year using res.rows
     for (let y = 1; y <= years; y++) {
-      for (let m = 0; m < 12; m++) {
-        const intP = bal * r;
-        const prinP = res.payment - intP + extra;
-        bal = Math.max(bal - prinP, 0);
-        if (bal <= 0) break;
-      }
-      yearlyBalances.push(Math.round(Math.max(bal, 0)));
+      const startIdx = (y - 1) * 12;
+      const endIdx = Math.min(y * 12, res.rows.length);
+      if (startIdx >= res.rows.length) break;
+      
+      const yearRows = res.rows.slice(startIdx, endIdx);
+      const yP = yearRows.reduce((s, r) => s + r.principal, 0);
+      const yI = yearRows.reduce((s, r) => s + r.interest, 0);
+      const yB = yearRows[yearRows.length - 1].balance;
+      
+      yearlyPrincipal.push(Math.round(yP));
+      yearlyInterest.push(Math.round(yI));
+      yearlyBalances.push(Math.round(yB));
       yearLabels.push('Yr ' + y);
-      if (bal <= 0) break;
+      
+      if (yB <= 0) break;
     }
+    
     if (barCharts[type]) barCharts[type].destroy();
     const bCtx = document.getElementById('bar-' + type).getContext('2d');
+    
+    const gradB = bCtx.createLinearGradient(0, 0, 0, 400);
+    gradB.addColorStop(0, 'rgba(26, 58, 42, 0.15)');
+    gradB.addColorStop(1, 'rgba(26, 58, 42, 0.0)');
+
     barCharts[type] = new Chart(bCtx, {
       type: 'bar',
       data: {
         labels: yearLabels,
-        datasets: [{ label: 'Remaining Balance', data: yearlyBalances, backgroundColor: '#1a3a2a', borderRadius: 4 }]
+        datasets: [
+          { 
+            type: 'line',
+            label: 'Balance', 
+            data: yearlyBalances, 
+            borderColor: '#1a3a2a', 
+            backgroundColor: gradB,
+            borderWidth: 2,
+            tension: 0.4,
+            fill: true,
+            yAxisID: 'y1',
+            pointRadius: 0,
+            pointHoverRadius: 5
+          },
+          { 
+            type: 'bar',
+            label: 'Principal Paid', 
+            data: yearlyPrincipal, 
+            backgroundColor: '#2ecc71',
+            yAxisID: 'y',
+            borderRadius: 2
+          },
+          { 
+            type: 'bar',
+            label: 'Interest Paid', 
+            data: yearlyInterest, 
+            backgroundColor: '#e74c3c',
+            yAxisID: 'y',
+            borderRadius: { topLeft: 4, topRight: 4, bottomLeft: 0, bottomRight: 0 }
+          }
+        ]
       },
       options: {
         responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' ' + fmt(ctx.raw) } } },
+        interaction: { mode: 'index', intersect: false },
+        plugins: { 
+          legend: { position: 'top', align: 'end', labels: { usePointStyle: true, boxWidth: 8, font: { family: 'Outfit', size: 12 } } }, 
+          tooltip: { 
+            backgroundColor: 'rgba(26, 58, 42, 0.95)',
+            titleFont: { family: 'Outfit', size: 13 },
+            bodyFont: { family: 'Outfit', size: 13 },
+            padding: 12,
+            cornerRadius: 8,
+            callbacks: { label: ctx => ctx.dataset.label + ': ' + fmt(ctx.raw) } 
+          } 
+        },
         scales: {
-          x: { grid: { display: false }, ticks: { font: { size: 10 }, maxTicksLimit: 15, autoSkip: true } },
-          y: { grid: { color: '#e2e0d8' }, ticks: { callback: v => syms[currency] + (v >= 1000 ? Math.round(v/1000) + 'k' : v), font: { size: 10 } } }
+          x: { stacked: true, grid: { display: false }, ticks: { font: { family: 'Outfit', size: 11 }, maxTicksLimit: 15, autoSkip: true } },
+          y: { 
+            stacked: true, 
+            position: 'left',
+            grid: { color: '#e2e0d8', drawBorder: false }, 
+            ticks: { callback: v => syms[currency] + (v >= 1000 ? Math.round(v/1000) + 'k' : v), font: { family: 'Outfit', size: 11 } },
+            title: { display: true, text: 'Paid per Year', font: { family: 'Outfit', size: 11 } }
+          },
+          y1: { 
+            position: 'right',
+            grid: { display: false }, 
+            ticks: { callback: v => syms[currency] + (v >= 1000 ? Math.round(v/1000) + 'k' : v), font: { family: 'Outfit', size: 11 } },
+            title: { display: true, text: 'Remaining Balance', font: { family: 'Outfit', size: 11 } }
+          }
         }
       }
     });
@@ -1133,6 +1444,8 @@ function renderAmort(type) {
     d.res.rows.forEach(r => {
       html += `<tr>
         <td>Mo ${r.month}</td>
+        <td>${r.rate.toFixed(2)}%</td>
+        <td>${fmt(r.scheduledPayment)}</td>
         <td class="td-p">${fmt(r.principal)}</td>
         <td class="td-i">${fmt(r.interest)}</td>
         <td class="td-b">${fmt(r.balance)}</td>
@@ -1149,9 +1462,13 @@ function renderAmort(type) {
       const yearRows = d.res.rows.slice(startIdx, endIdx);
       const yPrincipal = yearRows.reduce((s, r) => s + r.principal, 0);
       const yInterest = yearRows.reduce((s, r) => s + r.interest, 0);
+      const yPayment = yearRows.reduce((s, r) => s + r.scheduledPayment, 0);
       const yBalance = yearRows[yearRows.length - 1].balance;
+      const yRate = yearRows[yearRows.length - 1].rate;
       html += `<tr>
         <td>Year ${y}</td>
+        <td>${yRate.toFixed(2)}%</td>
+        <td>${fmt(yPayment)}</td>
         <td class="td-p">${fmt(yPrincipal)}</td>
         <td class="td-i">${fmt(yInterest)}</td>
         <td class="td-b">${fmt(yBalance)}</td>
@@ -1190,6 +1507,19 @@ function compareLoans() {
   const diff = Math.abs(resA.totalPaid - resB.totalPaid);
   const monthlyDiff = Math.abs(resA.payment - resB.payment);
 
+  let insightsHtml = '<div class="insights-title">🌟 Compare Insights</div><ul class="insights-list">';
+  if(aTerm !== bTerm) {
+    insightsHtml += `<li><strong>Term Difference:</strong> You are comparing loans with different terms. A longer term usually means lower monthly payments but significantly more total interest paid over the life of the loan.</li>`;
+  }
+  if(resA.payment < resB.payment && resA.totalPaid > resB.totalPaid) {
+    insightsHtml += `<li><strong>The Payment Trap:</strong> Loan A gives you a lower monthly payment, but Loan B saves you <strong>${fmt(diff)}</strong> over the life of the loan. Don't shop based on monthly payment alone!</li>`;
+  } else if(resB.payment < resA.payment && resB.totalPaid > resA.totalPaid) {
+    insightsHtml += `<li><strong>The Payment Trap:</strong> Loan B gives you a lower monthly payment, but Loan A saves you <strong>${fmt(diff)}</strong> over the life of the loan. Don't shop based on monthly payment alone!</li>`;
+  } else {
+    insightsHtml += `<li><strong>Clear Winner:</strong> Loan ${aWins ? 'A' : 'B'} is the clear financial winner, giving you both a better overall cost equation!</li>`;
+  }
+  insightsHtml += '</ul>';
+
   const res = document.getElementById('compare-result');
   res.className = 'compare-result show';
   res.innerHTML = `
@@ -1208,20 +1538,8 @@ function compareLoans() {
     <p style="margin-top:14px;font-size:13px;color:var(--green);font-weight:600;">
       ✅ Loan ${aWins ? 'A' : 'B'} saves you ${fmt(diff)} in total (${fmt(monthlyDiff)}/month ${resA.payment < resB.payment === aWins ? 'less' : 'more'}).
     </p>
+    <div class="insights-box show" style="margin-top: 14px;">${insightsHtml}</div>
   `;
-}
-
-// ── COPY RESULTS ──
-function copyResults(type) {
-  const d = calcData[type];
-  if (!d) return;
-  const text = `Loan Calculator Results
-Principal: ${fmt(d.principal)}
-Monthly Payment: ${fmt(d.res.payment)}
-Total Interest: ${fmt(d.res.totalInterest)}
-Total Payment: ${fmt(d.res.totalPaid)}
-Term: ${d.years} years`;
-  navigator.clipboard.writeText(text).then(() => alert('Results copied to clipboard!'));
 }
 
 // ── FAQ ──
