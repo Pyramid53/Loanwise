@@ -486,6 +486,13 @@ const template = (article) => `<!DOCTYPE html>
             font-size: 15px;
         }
         .back-link:hover { color: var(--accent); }
+        @media(max-width: 600px) {
+            header { flex-direction: column; gap: 12px; align-items: flex-start; padding: 20px; }
+            .article-container { padding: 24px 20px; margin: 20px auto; border-radius: 0; box-shadow: none; }
+            h1 { font-size: 28px; }
+            h2 { font-size: 20px; }
+            body { background: #fff; }
+        }
     </style>
 </head>
 <body>
@@ -558,6 +565,13 @@ const indexTemplate = `<!DOCTYPE html>
         p { font-size: 17px; color: var(--muted); }
         a { color: #2d6a4f; text-decoration: none; }
         a:hover { text-decoration: underline; }
+        @media(max-width: 600px) {
+            header { flex-direction: column; gap: 12px; align-items: flex-start; padding: 20px; }
+            .container { padding: 24px 20px; margin: 20px auto; border-radius: 0; box-shadow: none; }
+            h1 { font-size: 28px; }
+            h2 a { font-size: 20px; }
+            body { background: #fff; }
+        }
     </style>
 </head>
 <body>

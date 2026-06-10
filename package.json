@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "vite build && cp robots.txt sitemap.xml favicon-48x48.png favicon-32x32.png favicon-16x16.png apple-touch-icon.png dist/ || true",
+    "dev": "node generate_articles.cjs && vite --port=3000 --host=0.0.0.0",
+    "build": "node generate_articles.cjs && vite build && cp robots.txt sitemap.xml favicon-48x48.png favicon-32x32.png favicon-16x16.png apple-touch-icon.png 404.html 500.html dist/ || true",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit"
