@@ -22,7 +22,8 @@
             --text: #2c2b29;
             --muted: #6b6a67;
         }
-        body { background-color: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; margin: 0; padding: 0; line-height: 1.6; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; margin: 0; padding: 0; line-height: 1.6; overflow-x: hidden; width: 100%; }
+        html { overflow-x: hidden; width: 100%; }
         header { background: var(--surface); padding: 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; }
         .logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: var(--accent); }
         .logo span { color: #c9a84c; font-style: italic; }
@@ -38,9 +39,10 @@
         a:hover { text-decoration: underline; }
         @media(max-width: 600px) {
             header { flex-direction: column; gap: 12px; align-items: flex-start; padding: 20px; }
-            .container { padding: 24px 20px; margin: 20px auto; border-radius: 0; }
+            .container { padding: 24px 20px; margin: 20px auto; border-radius: 0; box-shadow: none; }
             h1 { font-size: 28px; }
             h2 a { font-size: 20px; }
+            body { background: #fff; }
         }
     </style>
 </head>

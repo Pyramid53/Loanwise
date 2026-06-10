@@ -447,7 +447,10 @@ const template = (article) => `<!DOCTYPE html>
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
         }
+        html { overflow-x: hidden; width: 100%; }
         header {
             background: var(--surface);
             padding: 20px;
