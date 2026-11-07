@@ -489,6 +489,36 @@ const template = (article) => `<!DOCTYPE html>
             font-size: 15px;
         }
         .back-link:hover { color: var(--accent); }
+        .ad-slot-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 24px auto;
+            text-align: center;
+            overflow-x: auto;
+            max-width: 100%;
+        }
+        .ad-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--muted);
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .ad-card {
+            background: #faf9f7;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 24px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: auto;
+        }
         @media(max-width: 600px) {
             header { flex-direction: column; gap: 12px; align-items: flex-start; padding: 20px; }
             .article-container { padding: 24px 20px; margin: 20px auto; border-radius: 0; box-shadow: none; }
@@ -497,6 +527,9 @@ const template = (article) => `<!DOCTYPE html>
             body { background: #fff; }
         }
     </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1174615331479460" crossorigin="anonymous"></script>
+    <script src="https://pl32218977.profitableratecpmnetwork.com/ac/32/97/ac3297e7f2dea110bc2150eeeecfef5c.js"></script>
+    <script src="https://pl32218985.profitableratecpmnetwork.com/1e/1e/48/1e1e485ec205007189d4597790714740.js"></script>
 </head>
 <body>
     <header>
@@ -507,12 +540,108 @@ const template = (article) => `<!DOCTYPE html>
         </div>
     </header>
 
+    <!-- TOP AD LEADERBOARD (728x90) -->
+    <div class="ad-slot-container" style="max-width: 800px; margin: 20px auto 0;">
+        <div class="ad-label">Advertisement</div>
+        <script>
+          atOptions = {
+            'key' : '6b8df6c20c9cb0f737a16d9405f0e685',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+          };
+        </script>
+        <script src="https://bauval.org/22/6b8df6c20c9cb0f737a16d9405f0e685"></script>
+    </div>
+
     <div class="article-container">
         <a href="/articles/all.html" class="back-link">← Back to Articles</a>
         <h1>${article.title}</h1>
+
+        <!-- ARTICLE TOP AD (468x60) -->
+        <div class="ad-slot-container" style="margin: 16px 0 24px;">
+            <div class="ad-label">Advertisement</div>
+            <script>
+              atOptions = {
+                'key' : '9eca6716aa84e0250385e1919f8e3931',
+                'format' : 'iframe',
+                'height' : 60,
+                'width' : 468,
+                'params' : {}
+              };
+            </script>
+            <script src="https://bauval.org/22/9eca6716aa84e0250385e1919f8e3931"></script>
+        </div>
+
         <div class="content">
             ${article.content}
         </div>
+
+        <!-- ARTICLE BOTTOM AD (300x250) -->
+        <div class="ad-card">
+            <div class="ad-label">Advertisement</div>
+            <script>
+              atOptions = {
+                'key' : 'b44bd85e2179446c6150aa832352396d',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+              };
+            </script>
+            <script src="https://bauval.org/22/b44bd85e2179446c6150aa832352396d"></script>
+        </div>
+
+        <!-- ARTICLE BANNER & SKYSCRAPERS -->
+        <div class="ad-card">
+            <div class="ad-label">Advertisement</div>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <div>
+                  <script>
+                    atOptions = {
+                      'key' : 'dfab50ad78e70ff92f7eafeb584aab06',
+                      'format' : 'iframe',
+                      'height' : 300,
+                      'width' : 160,
+                      'params' : {}
+                    };
+                  </script>
+                  <script src="https://bauval.org/22/dfab50ad78e70ff92f7eafeb584aab06"></script>
+                </div>
+                <div>
+                  <script>
+                    atOptions = {
+                      'key' : 'ba94a79569581a094dc6d69ca9603dd1',
+                      'format' : 'iframe',
+                      'height' : 600,
+                      'width' : 160,
+                      'params' : {}
+                    };
+                  </script>
+                  <script src="https://bauval.org/22/ba94a79569581a094dc6d69ca9603dd1"></script>
+                </div>
+                <div>
+                  <script>
+                    atOptions = {
+                      'key' : '55edde33ae19dbede0ab833cc9cc8db0',
+                      'format' : 'iframe',
+                      'height' : 50,
+                      'width' : 320,
+                      'params' : {}
+                    };
+                  </script>
+                  <script src="https://bauval.org/22/55edde33ae19dbede0ab833cc9cc8db0"></script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NATIVE SPONSORED AD WIDGET -->
+    <div class="ad-slot-container" style="max-width: 800px; margin: 30px auto; padding: 0 20px;">
+        <div class="ad-label">Sponsored Recommendations</div>
+        <script async="async" data-cfasync="false" src="https://pl32218978.profitableratecpmnetwork.com/d568233b5d06c2c03050bd43b16d3c0f/invoke.js"></script>
+        <div id="container-d568233b5d06c2c03050bd43b16d3c0f" style="width: 100%;"></div>
     </div>
 </body>
 </html>`;
@@ -554,7 +683,8 @@ const indexTemplate = `<!DOCTYPE html>
             --text: #2c2b29;
             --muted: #6b6a67;
         }
-        body { background-color: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; margin: 0; padding: 0; line-height: 1.6; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; margin: 0; padding: 0; line-height: 1.6; overflow-x: hidden; width: 100%; }
+        html { overflow-x: hidden; width: 100%; }
         header { background: var(--surface); padding: 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; }
         .logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: var(--accent); }
         .logo span { color: #c9a84c; font-style: italic; }
@@ -568,6 +698,36 @@ const indexTemplate = `<!DOCTYPE html>
         p { font-size: 17px; color: var(--muted); }
         a { color: #2d6a4f; text-decoration: none; }
         a:hover { text-decoration: underline; }
+        .ad-slot-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 24px auto;
+            text-align: center;
+            overflow-x: auto;
+            max-width: 100%;
+        }
+        .ad-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--muted);
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .ad-card {
+            background: #faf9f7;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 24px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: auto;
+        }
         @media(max-width: 600px) {
             header { flex-direction: column; gap: 12px; align-items: flex-start; padding: 20px; }
             .container { padding: 24px 20px; margin: 20px auto; border-radius: 0; box-shadow: none; }
@@ -576,6 +736,9 @@ const indexTemplate = `<!DOCTYPE html>
             body { background: #fff; }
         }
     </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1174615331479460" crossorigin="anonymous"></script>
+    <script src="https://pl32218977.profitableratecpmnetwork.com/ac/32/97/ac3297e7f2dea110bc2150eeeecfef5c.js"></script>
+    <script src="https://pl32218985.profitableratecpmnetwork.com/1e/1e/48/1e1e485ec205007189d4597790714740.js"></script>
 </head>
 <body>
     <header>
@@ -585,10 +748,64 @@ const indexTemplate = `<!DOCTYPE html>
             <a href="/" class="nav-link" style="margin-left: 20px;">Calculators</a>
         </div>
     </header>
+
+    <!-- TOP AD LEADERBOARD (728x90) -->
+    <div class="ad-slot-container" style="max-width: 800px; margin: 20px auto 0;">
+        <div class="ad-label">Advertisement</div>
+        <script>
+          atOptions = {
+            'key' : '6b8df6c20c9cb0f737a16d9405f0e685',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+          };
+        </script>
+        <script src="https://bauval.org/22/6b8df6c20c9cb0f737a16d9405f0e685"></script>
+    </div>
+
     <div class="container">
         <h1>Financial Articles & Guides</h1>
         <p style="margin-bottom: 40px;">Expert insights to help you make informed financial decisions and manage your debt effectively.</p>
+
+        <!-- IN-LIST AD (468x60) -->
+        <div class="ad-slot-container" style="margin: 0 0 30px;">
+            <div class="ad-label">Advertisement</div>
+            <script>
+              atOptions = {
+                'key' : '9eca6716aa84e0250385e1919f8e3931',
+                'format' : 'iframe',
+                'height' : 60,
+                'width' : 468,
+                'params' : {}
+              };
+            </script>
+            <script src="https://bauval.org/22/9eca6716aa84e0250385e1919f8e3931"></script>
+        </div>
+
         ${indexListHtml}
+
+        <!-- BOTTOM LIST AD (300x250) -->
+        <div class="ad-card">
+            <div class="ad-label">Advertisement</div>
+            <script>
+              atOptions = {
+                'key' : 'b44bd85e2179446c6150aa832352396d',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+              };
+            </script>
+            <script src="https://bauval.org/22/b44bd85e2179446c6150aa832352396d"></script>
+        </div>
+    </div>
+
+    <!-- NATIVE SPONSORED AD WIDGET -->
+    <div class="ad-slot-container" style="max-width: 800px; margin: 30px auto; padding: 0 20px;">
+        <div class="ad-label">Sponsored Recommendations</div>
+        <script async="async" data-cfasync="false" src="https://pl32218978.profitableratecpmnetwork.com/d568233b5d06c2c03050bd43b16d3c0f/invoke.js"></script>
+        <div id="container-d568233b5d06c2c03050bd43b16d3c0f" style="width: 100%;"></div>
     </div>
 </body>
 </html>`;
