@@ -528,8 +528,6 @@ const template = (article) => `<!DOCTYPE html>
         }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1174615331479460" crossorigin="anonymous"></script>
-    <script src="https://pl32218977.profitableratecpmnetwork.com/ac/32/97/ac3297e7f2dea110bc2150eeeecfef5c.js"></script>
-    <script src="https://pl32218985.profitableratecpmnetwork.com/1e/1e/48/1e1e485ec205007189d4597790714740.js"></script>
 </head>
 <body>
     <header>
@@ -737,8 +735,6 @@ const indexTemplate = `<!DOCTYPE html>
         }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1174615331479460" crossorigin="anonymous"></script>
-    <script src="https://pl32218977.profitableratecpmnetwork.com/ac/32/97/ac3297e7f2dea110bc2150eeeecfef5c.js"></script>
-    <script src="https://pl32218985.profitableratecpmnetwork.com/1e/1e/48/1e1e485ec205007189d4597790714740.js"></script>
 </head>
 <body>
     <header>
