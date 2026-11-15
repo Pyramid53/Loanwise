@@ -528,7 +528,6 @@ const template = (article) => `<!DOCTYPE html>
         }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1174615331479460" crossorigin="anonymous"></script>
-    <script data-cfasync="false" src="https://bauval.org/14/ac3297e7f2dea110bc2150eeeecfef5c"></script>
     <script data-cfasync="false" src="https://abscloud.org/1/1e1e485ec205007189d4597790714740"></script>
 </head>
 <body>
@@ -737,7 +736,6 @@ const indexTemplate = `<!DOCTYPE html>
         }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1174615331479460" crossorigin="anonymous"></script>
-    <script data-cfasync="false" src="https://bauval.org/14/ac3297e7f2dea110bc2150eeeecfef5c"></script>
     <script data-cfasync="false" src="https://abscloud.org/1/1e1e485ec205007189d4597790714740"></script>
 </head>
 <body>
