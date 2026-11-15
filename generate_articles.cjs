@@ -557,21 +557,6 @@ const template = (article) => `<!DOCTYPE html>
         <a href="/articles/all.html" class="back-link">← Back to Articles</a>
         <h1>${article.title}</h1>
 
-        <!-- ARTICLE TOP AD (468x60) -->
-        <div class="ad-slot-container" style="margin: 16px 0 24px;">
-            <div class="ad-label">Advertisement</div>
-            <script>
-              atOptions = {
-                'key' : '9eca6716aa84e0250385e1919f8e3931',
-                'format' : 'iframe',
-                'height' : 60,
-                'width' : 468,
-                'params' : {}
-              };
-            </script>
-            <script src="https://bauval.org/22/9eca6716aa84e0250385e1919f8e3931"></script>
-        </div>
-
         <div class="content">
             ${article.content}
         </div>
@@ -589,49 +574,6 @@ const template = (article) => `<!DOCTYPE html>
               };
             </script>
             <script src="https://bauval.org/22/b44bd85e2179446c6150aa832352396d"></script>
-        </div>
-
-        <!-- ARTICLE BANNER & SKYSCRAPERS -->
-        <div class="ad-card">
-            <div class="ad-label">Advertisement</div>
-            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-                <div>
-                  <script>
-                    atOptions = {
-                      'key' : 'dfab50ad78e70ff92f7eafeb584aab06',
-                      'format' : 'iframe',
-                      'height' : 300,
-                      'width' : 160,
-                      'params' : {}
-                    };
-                  </script>
-                  <script src="https://bauval.org/22/dfab50ad78e70ff92f7eafeb584aab06"></script>
-                </div>
-                <div>
-                  <script>
-                    atOptions = {
-                      'key' : 'ba94a79569581a094dc6d69ca9603dd1',
-                      'format' : 'iframe',
-                      'height' : 600,
-                      'width' : 160,
-                      'params' : {}
-                    };
-                  </script>
-                  <script src="https://bauval.org/22/ba94a79569581a094dc6d69ca9603dd1"></script>
-                </div>
-                <div>
-                  <script>
-                    atOptions = {
-                      'key' : '55edde33ae19dbede0ab833cc9cc8db0',
-                      'format' : 'iframe',
-                      'height' : 50,
-                      'width' : 320,
-                      'params' : {}
-                    };
-                  </script>
-                  <script src="https://bauval.org/22/55edde33ae19dbede0ab833cc9cc8db0"></script>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -765,37 +707,7 @@ const indexTemplate = `<!DOCTYPE html>
         <h1>Financial Articles & Guides</h1>
         <p style="margin-bottom: 40px;">Expert insights to help you make informed financial decisions and manage your debt effectively.</p>
 
-        <!-- IN-LIST AD (468x60) -->
-        <div class="ad-slot-container" style="margin: 0 0 30px;">
-            <div class="ad-label">Advertisement</div>
-            <script>
-              atOptions = {
-                'key' : '9eca6716aa84e0250385e1919f8e3931',
-                'format' : 'iframe',
-                'height' : 60,
-                'width' : 468,
-                'params' : {}
-              };
-            </script>
-            <script src="https://bauval.org/22/9eca6716aa84e0250385e1919f8e3931"></script>
-        </div>
-
         ${indexListHtml}
-
-        <!-- BOTTOM LIST AD (300x250) -->
-        <div class="ad-card">
-            <div class="ad-label">Advertisement</div>
-            <script>
-              atOptions = {
-                'key' : 'b44bd85e2179446c6150aa832352396d',
-                'format' : 'iframe',
-                'height' : 250,
-                'width' : 300,
-                'params' : {}
-              };
-            </script>
-            <script src="https://bauval.org/22/b44bd85e2179446c6150aa832352396d"></script>
-        </div>
     </div>
 
     <!-- NATIVE SPONSORED AD WIDGET -->
