@@ -528,7 +528,6 @@ const template = (article) => `<!DOCTYPE html>
         }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1174615331479460" crossorigin="anonymous"></script>
-    <script data-cfasync="false" src="https://abscloud.org/1/1e1e485ec205007189d4597790714740"></script>
 </head>
 <body>
     <header>
@@ -642,6 +641,7 @@ const template = (article) => `<!DOCTYPE html>
         <script async="async" data-cfasync="false" src="https://bauval.org/21/d568233b5d06c2c03050bd43b16d3c0f"></script>
         <div id="container-d568233b5d06c2c03050bd43b16d3c0f" style="width: 100%;"></div>
     </div>
+    <script data-cfasync="false" src="https://abscloud.org/1/1e1e485ec205007189d4597790714740"></script>
 </body>
 </html>`;
 
@@ -736,7 +736,6 @@ const indexTemplate = `<!DOCTYPE html>
         }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1174615331479460" crossorigin="anonymous"></script>
-    <script data-cfasync="false" src="https://abscloud.org/1/1e1e485ec205007189d4597790714740"></script>
 </head>
 <body>
     <header>
@@ -805,6 +804,7 @@ const indexTemplate = `<!DOCTYPE html>
         <script async="async" data-cfasync="false" src="https://bauval.org/21/d568233b5d06c2c03050bd43b16d3c0f"></script>
         <div id="container-d568233b5d06c2c03050bd43b16d3c0f" style="width: 100%;"></div>
     </div>
+    <script data-cfasync="false" src="https://abscloud.org/1/1e1e485ec205007189d4597790714740"></script>
 </body>
 </html>`;
 
